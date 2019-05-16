@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by hanqing0328 (http://jsbin.com/fejacol/4/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="radio silder">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+.banner{
+  width:400px;
+  height:200px;
+  position:relative;
+  margin:auto;
+}
+img{
+  width:400px;
+  height:200px;
+  position:absolute;
+  opacity:0;
+}
+.circle{
+  display:inline-block;
+  width:6px;
+  height:6px;
+  border:1px solid rgb(180,180,180);
+  position:relative;
+  top:180px;
+  left:332px;
+  border-radius:50px;
+  cursor:pointer;
+  background-color:rgb(150,148,157);
+}
+
+input:checked + img{
+  opacity:1;
+  transition:1.5s;
+}
+
+.arrowleft,.arrowright{
+  display:inline-block;
+  width:15px;
+  height:15px;
+  border:1px solid rgb(212,212,212);
+  position:relative;
+  display:none;
+  transform:rotate(45deg);
+  cursor:pointer;
+}
+.arrowleft{
+  top:35%;
+  left:15%;
+  border-right:transparent;
+  border-top:transparent;
+  z-index:3;
+}
+.arrowright{
+  top:27%;
+  left:93%;
+   border-left:transparent;
+  border-bottom:transparent;
+  z-index:3;
+}
+#pics2:checked ~ .arrowone,#pics3:checked ~ .arrowtwo,#pics1:checked ~ .arrowthree,#pics3:checked ~ .arrowoner,#pics1:checked ~ .arrowtwor,#pics2:checked ~ .arrowthreer
+{
+  display:block;
+ 
+ 
+}
+
+input{
+  display:none;
+}
+
+#pics1:checked ~ .circleone,#pics2:checked ~ .circletwo,#pics3:checked ~ .circlethree{
+  background-color: #fff;
+}
+
+.squreleft,.squreright{
+  width:23px;
+  height:43px;
+  position:absolute;
+  left:51px;
+  top:74px;
+  z-index:1;
+  background-color:rgb(112,112,112);
+  display:none;
+}
+.squreright{
+  left:373px;
+}
+.arrowleft:hover~.squreleft,.arrowright:hover~.squreright{
+  display:block;
+  pointer-events:none; 
+
+}
+
+.arrowleft:hover{
+  border:1px solid white;
+  border-right:transparent;
+  border-top:transparent;
+}
+.arrowright:hover{
+  border:1px solid white;
+  border-left:transparent;
+  border-bottom:transparent;
+}
+
+
+
+
+</style>
+</head>
+<body>
+ <div class="banner">
+   
+      <input type="radio" name="slide" id="pics1" checked>
+     <img src="https://i1.mifile.cn/a4/xmad_15566146318197_mAghl.jpg" alt=""  >
+     <input type="radio" name="slide" id="pics2">
+     <img src="https://i1.mifile.cn/a4/xmad_15529884424562_HKYaG.jpg" alt="">
+     <input type="radio" name="slide" id="pics3">
+     <img src="https://i1.mifile.cn/a4/xmad_15579184778872_ECdvK.jpg" alt="">
+  
+   
+   
+     <label for="pics1" class="circle circleone"></label>
+     <label for="pics2" class="circle circletwo"></label>
+     <label for="pics3" class="circle circlethree"></label>
+   
+   
+   
+     <label for="pics1" class="arrowleft arrowone"></label>
+     <label for="pics2" class="arrowleft arrowtwo"></label>
+     <label for="pics3" class="arrowleft arrowthree"></label>
+   
+   <label for="pics1" class="arrowright arrowoner"></label>
+     <label for="pics2" class="arrowright arrowtwor"></label>
+     <label for="pics3" class="arrowright arrowthreer"></label>
+   
+   <div class="squreleft"></div>
+   <div class="squreright"></div>
+   
+   
+ </div>
+</body>
+</html>

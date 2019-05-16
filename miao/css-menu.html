@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by hanqing0328 (http://jsbin.com/yizutid/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+ul{
+  list-style:none;
+  padding:0;  
+}
+
+/*创建多级菜单显示关系*/
+li > ul > li{
+  display:none;
+  position:relative;
+
+}
+li > ul{
+  position:absolute;
+  
+}
+ul ul ul{
+  left:100%;
+  top:0px;
+}
+li:hover > ul>li{
+  display:block;
+  
+}
+
+/*各种装饰*/
+li  >ul > li:hover{
+  background-color:rgb(0,122,204);
+  color:rgb(237,237,237);
+}
+li{
+  width:70px;
+  background-color:rgb(60,60,60);
+  color:rgb(139,139,139);
+  cursor:pointer;
+}
+.nav{
+  float:left; 
+  
+}
+.nav:hover{
+  background-color:rgb(50,50,50);
+}
+/*自动在尾部加上箭头*/
+ul> li > ul::before{
+  content:">";
+  position:absolute;
+  left:-1em;
+  color:rgb(237,237,237);
+}
+</style>
+</head>
+<body>
+<ul>
+  <li class="nav">文件
+  <ul>
+    <li>打开
+      <ul>
+        <li>文件1</li>
+        <li>保存</li>
+        <li>另存为</li>
+      </ul>
+    </li>
+    <li>编辑</li>
+    <li>保存</li>
+  </ul>
+  </li>
+  <li class="nav">编辑
+  <ul>
+    <li>打开
+      <ul>
+        <li>文件</li>
+        <li>保存</li>
+        <li>另存为</li>
+      </ul>
+    </li>
+    <li>编辑</li>
+    <li>保存
+    <ul>
+      <li>另存为</li>
+      <li>本地保存</li>
+    </ul>
+    </li>
+  </ul>
+  </li>
+  <li class="nav">帮助</li>
+  <li class="nav">设置</li>
+</ul>
+</body>
+</html>
