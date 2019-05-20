@@ -15,7 +15,13 @@ Released under the MIT license: http://jsbin.mit-license.org
   <meta name="viewport" content="width=device-width">
   <title>JS Bin</title>
 <style id="jsbin-css">
-
+html,body{
+  height:100%;
+}
+.father{
+  position:relative;
+  height:100%;
+}
 .head{
   position:absolute;
   background-color: pink;
@@ -42,10 +48,10 @@ Released under the MIT license: http://jsbin.mit-license.org
 </style>
 </head>
 <body>
-
+  <div class="father">
   <div class="head">head</div>
   <div class="side">side</div>
   <div class="main">main</div>
-
+</div>
 </body>
 </html>
