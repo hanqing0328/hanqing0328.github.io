@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  *{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+  }
+  .main{
+    margin:auto;
+    font-family: "Averia Serif Libre";
+    font-weight: bold;
+  
+   
+  }
+  .left{
+    position:absolute;
+    width: 20%;
+    top:0;
+    bottom: 0;
+    box-shadow: 3px 0 15px gray;
+
+    background-color: rgb(234,238,243);
+  }
+ 
+  .right1{
+    position:absolute;
+    width: 20%;
+    background-color: #fff;
+    left:60%;
+    top:0;
+    bottom:0;
+
+  }
+  .right2{
+    position: absolute;
+    width: 20%;
+    right:0;
+    top:0;
+    bottom:0;
+  }
+  .centertop{
+    position: absolute;
+    width: 40%;
+    top:0;
+    bottom:80%;
+    left: 20%;
+  
+  }
+ 
+  .titles{
+    color:#53637D;
+    font-size: 100%;
+    line-height:70px;
+    text-align: center;
+    height: 70px;
+  
+  }
+  input{
+
+    display: block;
+    width: 85%;
+
+    margin: auto;
+    border-radius: 999px;
+    margin-bottom: 5px;
+
+    
+  }
+  .search{
+    position: relative;
+    height:70px;
+    margin-bottom:5px;
+  }
+  .find{
+    height: 23px;
+    position:absolute;
+    width: 15%;
+    right:7%;
+    top:2px;
+    border-radius: 0 99px 99px 0;
+  }
+  img{
+    width:100%;
+    height: 20px;
+  
+    border-radius: 0 99px 99px 0;
+    
+  }
+  span{
+    display: block;
+    font-size: 100%;
+    color:#426dc9;
+    line-height: 2;
+    padding-left: 15px;
+    cursor: pointer;
+  }
+  span:hover{
+    background-color:rgb(187,206,233);
+  }
+  .word{
+    width:100%;
+    position: absolute;
+    top:100px;
+    bottom:0;
+    overflow-y: scroll;
+    box-shadow: none;
+  }
+  button{
+    background-color: #e5e5e5;
+    border:1px solid gray;
+    height: 35%;
+    width:25%;
+    margin:-2px;
+    font-size: 50%;
+  }
+  .btl{
+    background-color: #e5e5e5;
+    
+    border-radius:12px 0 0 12px;
+    
+  }
+  .btr{
+    background-color: #e5e5e5;
+    
+    border-radius:0 12px 12px 0;
+  }
+  .left-button{
+    height: 35%;
+    width:25%;
+    position: absolute;
+    top:45%;
+    left: 10px;
+  }
+  .right-button{
+    height: 35%;
+    width:25%;
+    position: absolute;
+    top:45%;
+    right:6%;
+  }
+  .one{
+    font-size: 150%;
+    position:absolute;
+    left: 14%;
+    top:20%;
+    cursor: pointer;
+  }
+  
+  .centerbottom{
+    position: absolute;
+    top:20%;
+    bottom:0;
+    left: 20%;
+    font-size: 100%;
+    width:40%;
+    box-shadow: 0 0 10px gray inset;
+    line-height:2.5;
+    text-align: left;
+    padding:15px;  
+  }
+  .clearbutton{
+    width: 20%;
+    height: 3%;
+    position: absolute;
+    top:2%;
+    left:5%;
+    border-radius:99px;
+    
+  }
+  input::placeholder{
+          color:gray;
+          font-size:100%;
+          text-align: left;
+          padding-left: 2px;
+          
+        }
+  
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="left">
+      <div class="titles">
+        OALD Se7en
+      </div>
+      <div class="search">
+        <input type="text">
+        <button type="submit" class="find"><img src="search.png" alt=""></button>
+      </div>
+      <div class="word">
+        <span>Lorem</span>
+        <span>ipsum</span>
+        <span>dolor</span>
+        <span>sit,</span>
+        <span>amet</span>
+        <span>consectetur</span>
+        <span>adipisicing</span>
+        <span>elit.</span>
+        <span>Incidunt</span>
+        <span>molestias</span>
+        <span>perspiciatis</span>
+        <span>nesciunt</span>
+        <span>repellat</span>
+        <span>est</span>
+        <span>beatae,</span>
+        
+      </div>
+    </div>
+    <div class="center">
+      <div class="centertop">
+        <div class="buttons left-button">
+          <button class="btl">+</button>
+          <button class="btr">♬</button>
+        </div>
+        <div class="titles one">monthly</div>
+        <div class="buttons right-button">
+          <button class="btl">Tools</button>
+          <button class="bt">Settings</button>
+          <button class="bt">Help</button>
+          <button class="btr">Donate</button>
+        </div>
+      </div>
+      <div class="centerbottom">
+        month∙ly/'mʌnθli/adv. <br>
+every month or once a month每个月；每月一次<br>
+She gets paid monthly. 她按月领薪水。
+      </div>
+    </div>
+    <div class="right1">
+      <div class="titles">
+        Vocabulary
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Search Vocabulary">
+       
+      </div>
+      <div class="word">
+        <span>Lorem1</span>
+        <span>ipsum</span>
+        <span>dolor</span>
+        <span>sit,</span>
+        <span>amet</span>
+        <span>consectetur</span>
+        <span>adipisicing</span>
+        <span>elit.</span>
+        <span>Incidunt</span>
+        <span>molestias</span>
+        <span>perspiciatis</span>
+        <span>nesciunt</span>
+        <span>repellat</span>
+        <span>est</span>
+      </div>
+    </div>
+    
+    <div class="right2">
+    
+      <button class="clearbutton">Clear</button>
+      <div class="titles">
+        History
+      </div>
+  
+      <div class="search" >
+        <input type="text" placeholder="Search History">
+        
+      </div>
+      <div class="word">
+        <span>Lorem2</span>
+        <span>ipsum</span>
+        <span>dolor</span>
+        <span>sit,</span>
+        <span>amet</span>
+        <span>consectetur</span>
+        <span>adipisicing</span>
+        <span>elit.</span>
+        <span>Incidunt</span>
+        <span>molestias</span>
+        <span>perspiciatis</span>
+        <span>nesciunt</span>
+        <span>repellat</span>
+        <span>est</span>   
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

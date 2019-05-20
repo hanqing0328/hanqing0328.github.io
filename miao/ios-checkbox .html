@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by hanqing0328 (http://jsbin.com/rejubaj/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="ios checkbox">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+label{
+  
+  display:block;
+  width:180px;
+  height:100px;
+  border:1px solid #ddd ;
+  border-radius:999px;
+  box-shadow:0 0 0 44px white inset;
+  transition:.6s;
+}
+label::before{
+  content:"";
+  display:block;
+  width:90px;
+  height:90px;
+  border:1px solid #ddd;
+  border-radius:999px;  
+  margin-top:3px;
+  margin-left:4px;
+  box-shadow:1px 1px 5px rgb(122,122,122);
+  background-color: #fff;
+  transition:.6s;
+}
+
+input:checked + label{
+  box-shadow:0 0 0 50px rgb(60,247,89) inset;
+  transition:.6s;
+}
+input:checked +label::before{
+  margin-left:84px;
+  transition:.6s;
+}
+</style>
+</head>
+<body>
+<input type="checkbox" id="bt">
+  <label for="bt"></label>
+</body>
+</html>
