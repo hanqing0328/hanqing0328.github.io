@@ -1,298 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by hanqing0328 (http://jsbin.com/barejet/4/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <style>
-    *{
-      box-sizing:border-box;
-      color:rgb(30, 84, 148);
-      font-size: 90%;
-      font-family:"lucida Grande",Verdana,"Microsoft YaHei";
-    }
-    .head{
-      position: relative;
-      width:100%;
-      height:calc(10vh);
-     
-     
-    }
-    .main{
-      position: relative;
-      width: 100%;
-      height:calc(99vh);     
-    }
-    .left{
-      width: 10%;
-      height:100%;
-      border:4px solid rgb(137,181,233);
-      min-width: 80px;
-    }
-    .right{
-      width: 90%;
-      height: 100%;
-      border-top:4px solid rgb(137,181,233);
-      position: absolute;
-      top:0;
-      left: 10%;
-     
-    }
-    .left-top{
-      width: 100%;
-      height:15%;
-      border-bottom:4px solid rgb(137,181,233);
-      background-image: url(https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/skin_0/nav_bg1e9c5d.gif);
-      background-repeat: no-repeat;
-      background-size: 108%  130%;
-      background-position:-8px 0px;
-      background-clip: border-box;
-      font-weight: bold;
-      padding-left: 10px;
-    
-    }
-    .left-bottom{
-      width: 100%;
-      height:85%;
-    
-      padding-left:5px;
-      overflow:scroll;
-    }
-    .head-right{
-      width:40%;
-      height:100%;
-      position:absolute;
-      right:0;
-      top:0;
-      background-image: url(https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/skin_0/top_bg1e9c5d.jpg);
-      background-repeat: no-repeat;
-      text-align: right;
-      background-size:800px 98px;
-      line-height: 52px;
-      cursor: pointer;
-    }
-    input{
-      width:30%;
-      height:20%;
-  
-     
-    }
-    .head-left{
-      position:absolute;
-      left: 23%;
-      top:30%;
-      cursor: pointer;
-   
-    }
-    img{
-      width:15%;
-      
+<meta name="description" content="qqmailposition">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
 
-      cursor: pointer;
-    }
-    span{
-      display: block;
-      line-height: 3;
-      cursor: pointer;
-    }
-    span:hover{
-      background-color: rgb(224, 236, 249);
-    }
-    .right-top-right{
-      height: 17%;
-      width: 25%;
-      background-color:rgb(224, 236, 249);
-      position: absolute;
-      margin-top:50px;
-      right:5px;
-      line-height: 2;
-      padding:5px;
+.head{
+  position:absolute;
+  background-color: pink;
+  height:100px;
+  width:100%;
+  top:0;
+}
+.side{
 
-    }
-    .right-top-left{
-      position: absolute;
-      padding-left:8%;
-      padding-top:2%;
-      line-height: 2;
-
-    }
-    b{
-
-      font-weight: bold;
-    }
-    .right-middle{
-      width:100%;
-      position:absolute;
-      top:200px;
-     
-
-    }
-    .right-middled-left{
- 
-      width: 70%;
-      height:100%;
-      margin-left: 8%;
-    
-     
-    }
-    .right-middle-right{
-      width: 20%;
-      height:100%;
-      border:1px solid rgb(137,181,233);
-      padding: 5px;
-      position:absolute;
-      right:0;
-      top:0;
-      border-top-right-radius: 5px;
-      border-top-left-radius: 5px;
-      
-    }
-    .one{
-      background-color: rgb(239,245,251);
-      width:100%;
-      height:20%;
-
-      line-height:40px;
-      border:1px solid rgb(137,181,233);
-      padding-left: 15px;
-      border-top-right-radius: 5px;
-      border-top-left-radius: 5px;
-    }
-    .two{
-      width:100%;
-      height:50%;
-
-      line-height:2;
-      border:1px solid rgb(137,181,233);
-      padding-left: 15px;
-      border-top:0;
-    }
-    .three{
-      width:100%;
-      height:40%;
-      border:1px solid rgb(137,181,233);
-      padding-left: 15px;
-      border-top:0;
- 
-     
-    }
-    .threel, .threer{
-      
-      width: 50%;
-      
- 
-      line-height: 2.5;
-
-    }
-    .threer{
-      position:absolute;
-      right: 0;
-      top:47%;
-      
-    }
-    .blue{
-      background-color: rgb(239,245,251);
-      width:100%;
-      height:40px;
- 
-      line-height:40px;
-      border:1px solid rgb(137,181,233);
-      text-align: center;
-      border-top-right-radius: 5px;
-      border-top-left-radius: 5px;
-    }
-    .msg{
-      height:310px;
-      line-height: 3;
-      padding-left:15px;
-    }
-   .right-bottom{
-     margin-top:10px;
-   }
-  </style>
+  position:absolute;
+  width:100px;
+  top:100px;
+  bottom:0;
+  background-color: blue;
+}
+.main{
+  position:absolute;
+  left:100px;
+  top:100px;
+  right:0;
+  bottom:0;
+  background-color:yellow;
+}
+</style>
 </head>
 <body>
-  <div class="head">
-      <img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/logo/logo_0_01f1927.png" alt="">
-      <div class="head-left">
-          邮箱首页 &nbsp| &nbsp设置&nbsp |&nbsp 换肤
-      </div>
-      <div class="head-right">
-          反馈建议 | 帮助中心 | 退出 <br>
-       
-      </div>
-  </div>
-  <div class="main">
-    <div class="left">
-      <div class="left-top">
-          <span class="word">写信</span>
-          <span class="word">收信</span>
-          <span class="word">通讯录</span>
-      </div>
-      <div class="left-bottom">
-          <span class="word">收件箱（999）</span>
-          <span class="word">星际邮件</span>
-          <span class="word">群邮件</span>
-          <span class="word">草稿箱（96）</span>
-          <span class="word">已发送</span>
-          <span class="word">已删除</span>
-          <span class="word">收件箱（999）</span>
-          <span class="word">星际邮件</span>
-          <span class="word">群邮件</span>
-          <span class="word">草稿箱（96）</span>
-          <span class="word">已发送</span>
-          <span class="word">已删除</span>
-      </div>
-    </div>
-    <div class="right">
-      <div class="right-top">
-        <div class="right-top-left">
-            <b>你好。</b><br>
-            <b>注册英文邮箱帐号 </b>(如：chen@foxmail.com)<br>
-            邮件：*** 封未读邮件<br>
-          <b>收件箱(***)群邮件(**)漂流瓶(**)订阅中心(***)</b>
-        </div>
-        <div class="right-top-right">
-            <b>推荐使用QQ邮箱英文帐号</b><br>
-            QQ邮箱英文帐号，不仅保护QQ号码安全，更适合用于发送正式邮件。点击前往设置
-        </div>
-      </div>
-      <div class="right-middle">
-        <div class="right-middled-left">
-          <div class="one">邮箱推荐</div>
-          <div class="two">
-            给邮件添加备注<br>
-            读信时，记下备忘方便日后查阅。了解详情</div>
-          <div class="three">
-            <div class="threel">
-                iPhone版</br>
-                iPad版</br>
-                Android版</br>
-            </div>
-            <div class="threer">
-                明信片 - 贺卡</br>
-                记事本 - 日历</br>
-                文件中转站</br>
-            </div>
-            
-          </div>
-          <div class="right-bottom">
-            2017年8月31日更新 | 暖灯行动 | 企业邮箱 | 开放平台 | 体验室 | 邮箱助手 | 自助查询 | 隐私政策 <br>
-            标准版 - 基本版 | © 1998 - 2019 Tencent Inc. All Rights Reserved
-        </div>
-        </div>
-        <div class="right-middle-right">
-          <div class="blue">我的信息</div>
-          <div class="msg">
-              积分等级：(10级)  自助查询<br>
-              邮箱容量：4G (已使用1.63G，41%) 
-          </div>
-          
-        </div>
-      </div>
-      
-    </div>
-  </div>
+
+  <div class="head">head</div>
+  <div class="side">side</div>
+  <div class="main">main</div>
+
 </body>
 </html>
