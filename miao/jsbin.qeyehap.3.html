@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by hanqing0328 (http://jsbin.com/qeyehap/3/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="oald">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet/less" type="text/css" href="styles.less" />
+  <title>JS Bin</title>
+<style id="jsbin-css">
+.table{
+ table-layout:fixed;
+ width:400px;
+  text-align:left;
+ 
+  border-collapse:collapse;
+  tr{
+    border-top:1px solid gray;
+   
+
+  }
+  thead tr{
+    border-bottom:2px solid gray;
+  }
+  th, td{
+    padding:.75rem;
+  }
+}
+
+.table-dark{
+  
+    background:rgb(52,58,64);
+    color:white;
+    
+}
+
+.thead-light{
+  thead tr{
+    background-color: rgb(236,236,236);
+  }
+}
+
+.thead-dark{
+  thead tr{
+    background-color: rgb(52,58,64);
+    color:white;
+  }
+}
+
+.table-striped{
+  thead tr,tr:nth-child(2n){
+    background-color: rgb(236,236,236);
+  }
+}
+.table-bordered{
+  th,td{ 
+    border:1px solid gray;
+  }
+}
+.table-borderless {
+  thead tr,tr{
+    border:none;
+  }
+}
+
+.table-hover tbody tr:hover {
+  
+    background-color: rgb(236,236,236);
+  
+}
+
+.table-sm {
+  th,td{ 
+    padding:0;
+  }
+}
+
+.table-color{
+  .table-pink{
+    background-color: pink;
+  }
+  .table-blue{
+    background-color: blue;
+  }
+   .table-yellow{
+    background-color: yellow;
+  }
+  .table-red{
+    background-color:red;
+  }
+  
+}
+caption{
+ caption-side:bottom ;
+}
+
+.table-responsive{
+  display:block;
+
+  overflow:auto;
+ 
+}
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+<table class="table table-responsive   " >
+  
+
+  <thead >
+    <tr class="table-pink">
+      <th >#</th>
+      <th>first</th>
+      <th>second</th>
+      <th>third</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-blue">
+      <th>1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr class="table-yellow">
+      <th>2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr class="table-red">
+      <th>3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
+</html>
