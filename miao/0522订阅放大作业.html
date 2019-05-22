@@ -3,6 +3,15 @@
 Created using JS Bin
 http://jsbin.com
 
+Copyright (c) 2019 by hanqing0328 (http://jsbin.com/gukorew/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<!--
+Created using JS Bin
+http://jsbin.com
+
 Copyright (c) 2019 by hanqing0328 (http://jsbin.com/hikodif/2/edit)
 
 Released under the MIT license: http://jsbin.mit-license.org
@@ -14,8 +23,10 @@ Released under the MIT license: http://jsbin.mit-license.org
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>JS Bin</title>
+
 <style id="jsbin-css">
-div{
+
+div.oneout{
   width:150px;
   height:100px;
   border:1px solid ;
@@ -25,7 +36,7 @@ div{
   border-bottom:2px solid red;
   
 }
-div:hover{
+div.oneout:hover{
  display:blok;
   font-size:24px;
   transition:2s;
@@ -34,7 +45,7 @@ div:hover{
   font-weight:bolder;
   
 }
-span{
+span.onein{
    position:absolute;
 
   
@@ -42,9 +53,41 @@ span{
   
 }
 
+
+.twoout{
+  width:150px;
+  height:100px;
+  border:1px solid ;
+  background-color:aqua;
+  font-size:12px;
+  
+  border-bottom:2px solid red;
+  display:table-cell;
+  vertical-align:bottom;
+}
+
+span.twoin{  
+ border:1px solid;  
+}
+
+span:hover{
+  font-size:24px;
+  transition:2s;
+}
+
+
+
+
+
+
 </style>
 </head>
 <body>
-<div><span>订阅博客</span></div>
+<div class="oneout"><span class="onein">订阅博客</span></div>
+  
+  <div class="twoout">
+    <span class="twoin">订阅博客</span>
+  </div>
+  
 </body>
 </html>

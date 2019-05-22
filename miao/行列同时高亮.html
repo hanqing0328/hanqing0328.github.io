@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by hanqing0328 (http://jsbin.com/qarijo/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+table{
+
+  text-align:center;
+  border-collapse:collapse;
+  width:150px;
+  height:150px;
+  overflow:hidden;
+
+}
+td{
+   border:5px solid blue;
+     position:relative;
+}
+
+tr:hover{
+  background-color:yellow;
+}
+
+
+td:hover::after{
+   content:"";
+  width:50px;
+  height:999px;
+  display:block;
+  background-color:yellow;
+  position:absolute;
+  z-index:-1;
+  top:-99px;
+  left:-5px;
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+}
+</style>
+</head>
+<body>
+<table>
+  <tbody>
+    <col>
+    <col>
+    <col>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+  
+</body>
+</html>

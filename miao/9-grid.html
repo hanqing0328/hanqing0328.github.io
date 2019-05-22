@@ -3,51 +3,146 @@
 Created using JS Bin
 http://jsbin.com
 
-Copyright (c) 2019 by hanqing0328 (http://jsbin.com/figipiz/2/edit)
+Copyright (c) 2019 by hanqing0328 (http://jsbin.com/vopetec/3/edit)
 
 Released under the MIT license: http://jsbin.mit-license.org
 -->
 <meta name="robots" content="noindex">
 <html>
 <head>
-<meta name="description" content="oald">
+<meta name="description" content=" ">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>JS Bin</title>
 <style id="jsbin-css">
 table{
-  border-collapse:collapse;
-  width:100px;
-  height:100px;
+
   text-align:center;
+  border-collapse:collapse;
   
 }
 td{
-  border:1px  outset gray;
-  
+  width:50px;
+  height:50px;
+   box-sizing:border-box;
+}
+tr{
+  border:5px solid blue;
+}
+col{
+  border:5px solid blue;
 }
 td:hover{
-  border:1px  solid red;
+  border:5px solid red;
 }
+
+.outtwo{
+  text-align:center;
+ 
+  width:150px;
+  height:150px;
+  border:2.5px solid blue;
+  box-sizing:content-box;
+
+}
+.intwo{
+  width:50px;
+  height: 50px;
+  line-height:50px;
+  border:2.5px solid blue;
+  float:left;
+   box-sizing:border-box;
+}
+.intwo:hover{
+border:5px solid red;
+
+}
+
+
+.outone{
+  display:block;
+   text-align:center;
+ 
+  width:150px;
+  height:150px;
+  border:2.5px solid blue;
+  box-sizing:content-box;
+}
+
+.inone{
+  display:inline-block;
+  width:50px;
+  height: 50px;
+  line-height:50px;
+  border:2.5px solid blue;
+  float:left;
+   box-sizing:border-box;
+}
+.inone:hover{
+  border:5px solid red;
+
+ 
+}
+
+
+
+
+
+
+
 </style>
 </head>
 <body>
 <table>
-  <tr>
-    <td>1</td>
-    <td>2</td>
-    <td>3</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>5</td>
-    <td>6</td>
-  </tr>
-  <tr>
-    <td>7</td>
-    <td>8</td>
-    <td>9</td>
-  </tr>
+  <tbody>
+    <col>
+    <col>
+    <col>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
 </table>
+  
+  
+<div class="outtwo">
+  <div class="intwo1 intwo">1</div>
+  <div class="intwo2 intwo">2</div>
+  <div class="intwo3 intwo">3</div>
+  <div class="intwo4 intwo">4</div>
+  <div class="intwo5 intwo">5</div>
+  <div class="intwo6 intwo">6</div>
+  <div class="intwo7 intwo">7</div>
+  <div class="intwo8 intwo">8</div>
+  <div class="intwo9 intwo">9</div>
+</div>
+  
+  
+  
+  
+<span class="outone">
+<span class="inone">1</span>
+<span class="inone">2</span>
+<span class="inone">3</span>
+<span class="inone">4</span>
+<span class="inone">5</span>
+<span class="inone">6</span>
+<span class="inone">7</span>
+<span class="inone">8</span>
+<span class="inone">9</span> 
+  </span>
+  
 </body>
 </html>

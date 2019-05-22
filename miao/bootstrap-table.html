@@ -85,16 +85,16 @@ Released under the MIT license: http://jsbin.mit-license.org
 }
 
 .table-color{
-  .table-pink{
+  tbody tr:nth-child(n+1){
     background-color: pink;
   }
-  .table-blue{
+  tbody tr:nth-child(n+2){
     background-color: blue;
   }
-   .table-yellow{
+  tbody tr:nth-child(n+3){
     background-color: yellow;
   }
-  .table-red{
+  tbody tr:nth-child(n+4){
     background-color:red;
   }
   
@@ -121,11 +121,11 @@ caption{
 </style>
 </head>
 <body>
-<table class="table   " >
+<table class="table  " >
   
 
   <thead >
-    <tr class="table-pink">
+    <tr>
       <th >#</th>
       <th>first</th>
       <th>second</th>
@@ -133,19 +133,19 @@ caption{
     </tr>
   </thead>
   <tbody>
-    <tr class="table-blue">
+    <tr>
       <th>1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
-    <tr class="table-yellow">
+    <tr>
       <th>2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
-    <tr class="table-red">
+    <tr>
       <th>3</th>
       <td>Larry</td>
       <td>the Bird</td>
