@@ -1,0 +1,313 @@
+html {
+  font-size:calc(100vw / 360 * 100);
+  height: 100%;
+}
+*{
+  box-sizing:border-box;
+  padding:0;
+  margin:0;
+}
+body{
+  height: 100%; 
+}
+.container{
+  width: 3.6rem;
+  height: 100%;
+
+}
+.header{
+  width:100%;
+  height: 0.37rem;
+  background-color:rgb(255,133,42);
+  border:1px solid red;
+  position: fixed;
+  top:0;
+}
+.logo{
+  background-image: url(taobaologo.png);
+  background-position: center;
+  background-size: contain;
+  width:0.40rem;
+  height: 0.37rem;
+  float: left;
+}
+.search{
+  float: left;
+  background-color:rgb(255,78,37);
+  margin-top:0.05rem;
+  font-size: 0.15rem;
+  border:none;
+  width:3.02rem;
+  height:0.25rem;
+  text-align:center;
+  border-radius: 0.05rem;
+
+}
+::-webkit-input-placeholder{
+  color:white;
+}
+.bodys{
+  width:100%;
+  padding-top:0.37rem;
+}
+.banner{
+  width:100%;
+  height:1.152rem ;
+}
+.banner img{
+  width:100%;
+  height: 100%;
+}
+.taglist{
+  overflow:hidden;
+  background-color: #fff;
+  height: 1.536rem;
+}
+.tag{
+  width: 0.585rem;
+  height: 0.643rem;
+  float: left;
+  margin:0.05rem;
+}
+.tag .icon{
+  width: 0.58rem; 
+  height: 0.58rem;
+  background-repeat: no-repeat; background-position: center ; 
+  background-size: contain; 
+}
+.tag .text{
+  font-size:0.10rem;
+  color:rgb(102,102,102);
+  width:0.585rem;
+  text-align: center;
+}
+.tag1 .icon{
+  background-image: url("https://gw.alicdn.com/tfs/TB1Wxi2trsrBKNjSZFpXXcXhFXa-183-144.png_.webp");
+}
+.tag2 .icon{
+  background-image: url("https://img.alicdn.com/tfs/TB10UHQaNjaK1RjSZKzXXXVwXXa-183-144.png?getAvatar=1_.webp");
+}
+.tag3 .icon{
+  background-image: url("https://gw.alicdn.com/tfs/TB11rTqtj7nBKNjSZLeXXbxCFXa-183-144.png?getAvatar=1_.webp")
+}
+.tag4 .icon{
+  background-image: url("https://gw.alicdn.com/tps/TB1eXc7PFXXXXb4XpXXXXXXXXXX-183-144.png?getAvatar=1_.webp");
+}
+.tag5 .icon{
+  background-image: url("https://gw.alicdn.com/tfs/TB1IKqDtpooBKNjSZFPXXXa2XXa-183-144.png_.webp");
+}
+.tag6 .icon{
+  background-image: url("https://gw.alicdn.com/tfs/TB1o0FLtyMnBKNjSZFoXXbOSFXa-183-144.png_.webp");
+}
+.tag7 .icon{
+  background-image: url("https://gw.alicdn.com/tfs/TB15nKhtpkoBKNjSZFEXXbrEVXa-183-144.png?getAvatar=1_.webp");"
+}
+.tag8 .icon{
+  background-image: url("https://gw.alicdn.com/tfs/TB1BqystrZnBKNjSZFrXXaRLFXa-183-144.png?getAvatar=1_.webp");
+}
+.tag9 .icon{
+  background-image: url("https://gw.alicdn.com/tfs/TB1CMf4tlnTBKNjSZPfXXbf1XXa-183-144.png?getAvatar=1_.webp");
+}
+.tag10 .icon{
+  background-image: url("https://gw.alicdn.com/tfs/TB18P98tyQnBKNjSZFmXXcApVXa-183-144.png?getAvatar=1_.webp");
+}
+.banner-bottom{
+  width:100%;
+ 
+  background-color: #fff;
+  overflow: hidden;
+}
+.banner-bottom .left-icon{
+  width: 0.336rem;
+   height: 0.336rem; 
+   background-image: url("https://gw.alicdn.com//tfs//TB1TBEMXU6FK1Jjy1XdXXblkXXa-105-107.png_.webp"); background-repeat: no-repeat; background-position:center; 
+   background-size: contain;
+   float:left;
+   margin: 0.15rem;
+}
+.banner-bottom .right-icon{
+  float:right;
+  width: 0.816rem; 
+  height: 0.576rem; 
+  background-size: cover; background-position: center; 
+  background-repeat: no-repeat; background-image: url("https://img.alicdn.com/tfs/TB1bLfqgvBNTKJjy0FdXXcPpVXa-513-339.png");
+  margin: 0.1rem;
+}
+.banner-bottom .text{
+  float: left;
+
+  height:0.576rem;
+  margin: 0.1rem;
+}
+.banner-bottom .text p{
+  font-size:0.115rem;
+  height: 0.25rem;
+  line-height: 0.25rem;
+}
+/* tplwrapper */
+.tplwrapper{
+  width:100%;
+  height:2.15rem;
+  margin-top:0.1rem;
+  overflow: hidden;
+  background-color: #fff;
+}
+.tplwrapper .block{
+  width:50%;
+  height: 1.075rem;
+  float: left;
+  
+}
+.block1,.block3{
+  border-right:1px solid rgb(238,238,238)
+}
+.tplwrapper .block .block-left{
+  width: 50%;
+  height: 100%;
+  float: left;
+  margin-top:0.1rem;
+  padding-left:0.1rem;
+}
+.tplwrapper .block .block-left .icon{
+  width: 0.691rem; 
+  height: 0.556rem; 
+  margin-top:0.15rem;
+  background-repeat: no-repeat; background-position: center center; 
+  background-size: contain;
+}
+.tplwrapper .block .block-right{
+  width: 50%;
+  height: 100%;
+  float: left;
+  margin-top:0.1rem;
+}
+.tplwrapper .block .block-right .icon{
+   width: 0.758rem;
+   height: 0.888rem; 
+   background-repeat: no-repeat; background-position: center center; 
+   background-size: contain; 
+}
+.headicon{
+  height: 0.249rem; 
+  
+  background-repeat: no-repeat; 
+  background-size: cover;
+  margin-top: -0.1rem;
+}
+.tplwrapper .block1 .headicon{
+  background-image: url("https://gw.alicdn.com/tfs/TB1317ISFXXXXbxXVXXXXXXXXXX-563-78.png_.webp"); 
+}
+.tplwrapper .block1 .block-left .icon{
+  background-image: url("//gw.alicdn.com/imgextra/O1CN010mOo3Q1C9tyU2cl3t_!!39-0-lubanu.jpg_100x100q85s150.jpg_.webp"); 
+}
+.tplwrapper .block1 .block-right .icon{
+  background-image: url("//gw.alicdn.com/imgextra/O1CN01pGTjXR1DElntKuzMC_!!185-0-lubanu.jpg_200x200q85s150.jpg_.webp");
+}
+.tplwrapper .block2 .headicon{
+  background-image: url("https://gw.alicdn.com/tfs/TB1ANZGSFXXXXXdXVXXXXXXXXXX-563-78.png_.webp");
+}
+.tplwrapper .block2 .block-left .icon{
+  background-image: url("//gw.alicdn.com/imgextra/i3/77/O1CN01aguVBG1CRIzrhWKV6_!!77-0-lubanu.jpg_100x100q85s150.jpg_.webp")
+}
+.tplwrapper .block2 .block-right .icon{
+  background-image: url("//gw.alicdn.com/imgextra/i2/128/O1CN01OM5DJS1CofB3kZBjp_!!128-0-lubanu.jpg_200x200q85s150.jpg_.webp")
+}
+.tplwrapper .block3 .headicon{
+  background-image: url("https://img.alicdn.com/tfs/TB1NnpaxljTBKNjSZFuXXb0HFXa-563-78.png_.webp");
+}
+.tplwrapper .block3 .block-left .icon{
+  background-image: url("//gw.alicdn.com/imgextra/i4/67/TB2OMVinr1YBuNjSszhXXcUsFXa_!!67-0-luban.jpg_100x100q85s150.jpg_.webp")
+}
+.tplwrapper .block3 .block-right .icon{
+  background-image: url("//gw.alicdn.com/imgextra/i4/143/TB25d_yw49YBuNjy0FfXXXIsVXa_!!143-0-luban.jpg_200x200q85s150.jpg_.webp");
+}
+.tplwrapper .block4 .headicon{
+  background-image: url("https://gw.alicdn.com/tfs/TB1FqhfSVXXXXaqXXXXXXXXXXXX-563-78.png_.webp");
+}
+.tplwrapper .block4 .block-left .icon{
+  background-image: url("//gw.alicdn.com/imgextra/i4/8/TB239vwnv5TBuNjSspmXXaDRVXa_!!8-0-luban.jpg_100x100q85s150.jpg_.webp");
+}
+.tplwrapper .block4 .block-right .icon{
+  background-image: url("//gw.alicdn.com/imgextra/i3/27/TB2ZLBLfgKTBuNkSne1XXaJoXXa_!!27-0-luban.jpg_200x200q85s150.jpg_.webp");
+}
+/* tplwrapper2 */
+.tplwrapper2{
+  width:100%;
+  height:3.38rem ;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin:0;
+  padding:0; 
+  margin-top:0.2rem;
+  align-items:space-between;
+  background-color: #fff;
+}
+.tplwrapper2 .imgs{
+  width: 100%; 
+  height: 100%; 
+  background-repeat: no-repeat; background-position: center;
+  background-size: cover;
+}
+.tplwrapper2 .imgone{
+  background-image: url("ren.png"); 
+  width:2.38rem;
+  height: 1.20rem;
+}
+.tplwrapper2 .imgtwo{
+  background-image: url("ji.png"); 
+  width:1.17rem;
+  height: 1.20rem;
+}
+.tplwrapper2 .imgthree{
+  background-image: url("https://gw.alicdn.com/imgextra/i2/21/TB2xOlRXIaCJuJjy1zcXXXPgFXa_!!21-0-luban.jpg_200x200q85s150.jpg_.webp");
+  width:1.17rem;
+  height: 1.20rem
+}
+.tplwrapper2 .imgfour{
+  background-image: url("https://gw.alicdn.com/imgextra/i4/145/TB2z8zOhMLD8KJjSszeXXaGRpXa_!!145-0-luban.jpg_200x200q85s150.jpg_.webp");
+  width:1.17rem;
+  height: 1.20rem
+}
+.tplwrapper2 .imgfive{
+  background-image: url("https://gw.alicdn.com/imgextra/i1/166/TB2QTt7hx6I8KJjSszfXXaZVXXa_!!166-0-luban.jpg_200x200q85s150.jpg_.webp");
+  width:1.17rem;
+  height: 1.20rem;
+}
+.tplwrapper2 .text {
+  width:33%;
+  height: 0.528rem;
+  font-size:0.11rem;
+  color:rgb(153,153,153);
+  line-height: 0.2rem;
+  padding-top: 0.1rem;
+  border-right:0.02px solid ;
+  border-bottom:0.02px solid ;
+  padding:0.1rem;
+}
+.tplwrapper2 .text3{
+  border-right:none;
+}
+.tplwrapper2 .text h3{
+  color:black;
+}
+.tplwrapper2 .text4{
+  width:100%;
+  height: 0.345rem;
+  font-size:0.124rem;
+  padding:0.1rem;
+}
+.footer{
+  width: 100% ;
+  height: 0.432rem;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  position:fixed;
+  bottom:0;
+}
+.footer img{
+  width:0.4rem;
+  height: 0.392rem;
+  cursor: pointer;
+}

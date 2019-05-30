@@ -3,86 +3,84 @@
 Created using JS Bin
 http://jsbin.com
 
-Copyright (c) 2019 by hanqing0328 (http://jsbin.com/vopetec/3/edit)
+Copyright (c) 2019 by hanqing0328 (http://jsbin.com/rileta/3/edit)
 
 Released under the MIT license: http://jsbin.mit-license.org
 -->
 <meta name="robots" content="noindex">
 <html>
 <head>
-<meta name="description" content=" ">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>JS Bin</title>
 <style id="jsbin-css">
-table{
+div.out1{
+  width:165px;
 
-  text-align:center;
-  border-collapse:collapse;
-  
+  display:flow-root;
+
 }
-td{
+span.in1{
+  float:left;
   width:50px;
   height:50px;
-   box-sizing:border-box;
+  border:5px solid blue;
+  margin-left:-5px;
+  margin-bottom:-5px;
+  position:relative;
+  text-align:center;
+  line-height:50px;
+}
+span.in1:hover{
+  border-color:red;
+  z-index:1;
+}
+
+div.out2{
+  width:160px;
+  margin-left:5px;
+
+}
+span.in2{
+  display:inline-block;
+  width:50px;
+  height:50px;
+  border:5px solid blue;
+  margin-left:-10px;
+  margin-bottom:-5px;
+  position:relative;
+  text-align:center;
+  line-height:50px;
+}
+span.in2:hover{
+  border-color:red;
+  z-index:1;
+}
+
+
+
+table{
+  border-collapse:collapse;
+  width:160px;
+  height:160px;
+  text-align:center;
 }
 tr{
   border:5px solid blue;
 }
 col{
-  border:5px solid blue;
+   border:5px solid blue;
+
 }
 td:hover{
   border:5px solid red;
 }
 
-.outtwo{
-  text-align:center;
- 
-  width:150px;
-  height:150px;
-  border:2.5px solid blue;
-  box-sizing:content-box;
-
-}
-.intwo{
-  width:50px;
-  height: 50px;
-  line-height:50px;
-  border:2.5px solid blue;
-  float:left;
-   box-sizing:border-box;
-}
-.intwo:hover{
-border:5px solid red;
-
-}
 
 
-.outone{
-  display:block;
-   text-align:center;
- 
-  width:150px;
-  height:150px;
-  border:2.5px solid blue;
-  box-sizing:content-box;
-}
 
-.inone{
-  display:inline-block;
-  width:50px;
-  height: 50px;
-  line-height:50px;
-  border:2.5px solid blue;
-  float:left;
-   box-sizing:border-box;
-}
-.inone:hover{
-  border:5px solid red;
 
- 
-}
+
 
 
 
@@ -93,8 +91,35 @@ border:5px solid red;
 </style>
 </head>
 <body>
-<table>
-  <tbody>
+<div class="out1">
+  <span class="in1">1</span>
+  <span class="in1">2</span>
+  <span class="in1">3</span>
+  <span class="in1">4</span>
+  <span class="in1">5</span>
+  <span class="in1">6</span>
+  <span class="in1">7</span>
+  <span class="in1">8</span>
+  <span class="in1">9</span>
+</div>
+  
+  <br>
+  
+<div class="out2">
+  <span class="in2">1</span>
+  <span class="in2">2</span>
+  <span class="in2">3</span>
+  <span class="in2">4</span>
+  <span class="in2">5</span>
+  <span class="in2">6</span>
+  <span class="in2">7</span>
+  <span class="in2">8</span>
+  <span class="in2">9</span>
+</div>
+  
+ <br>
+  
+  <table>
     <col>
     <col>
     <col>
@@ -104,45 +129,57 @@ border:5px solid red;
       <td>3</td>
     </tr>
     <tr>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
     </tr>
     <tr>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
     </tr>
-  </tbody>
-</table>
-  
-  
-<div class="outtwo">
-  <div class="intwo1 intwo">1</div>
-  <div class="intwo2 intwo">2</div>
-  <div class="intwo3 intwo">3</div>
-  <div class="intwo4 intwo">4</div>
-  <div class="intwo5 intwo">5</div>
-  <div class="intwo6 intwo">6</div>
-  <div class="intwo7 intwo">7</div>
-  <div class="intwo8 intwo">8</div>
-  <div class="intwo9 intwo">9</div>
-</div>
-  
-  
-  
-  
-<span class="outone">
-<span class="inone">1</span>
-<span class="inone">2</span>
-<span class="inone">3</span>
-<span class="inone">4</span>
-<span class="inone">5</span>
-<span class="inone">6</span>
-<span class="inone">7</span>
-<span class="inone">8</span>
-<span class="inone">9</span> 
-  </span>
-  
+  </table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
