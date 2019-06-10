@@ -10,7 +10,6 @@ header{
   font-size:12px;
   color: #b0b0b0;
   background: #333;
-  z-index: 999;
 }
 main{
   width:100%;
@@ -44,124 +43,54 @@ main{
 .header-right{
   float: right;
   background-color: #333;
- 
 }
 .header-right span{
   display: inline-block;
   line-height: 40px;
-
 } 
-.header-right > span:hover{
+.header-right span:hover{
   color: #fff;
   cursor: pointer;
 }
 
-.header-right > span:nth-child(n+1):nth-last-child(n+2):after{
+.header-right span:nth-child(n+1):nth-last-child(n+3):after{
   content:"|";
   line-height: 40px;
   margin: .5em;
 }
-/*展开效果思路
-购物车外元素包着内元素， 外元素的高度被内元素撑高。 外元素高度max-height:0; over-flow:hidden  hover的时候max-height：具体值 即可*/
-.cart{
+.header-right :nth-last-child(1){
   width: 120px;
   height: 40px;
   background: #424242;
   text-align: center;
   margin-left: 2em;
   position: relative;
-  float: right;
-  line-height: 40px;
-
 }
-.cart:hover{
-  color:orange;
-  cursor: pointer;
-}
-.cartout{
-
-  max-height: 0;
+.header-right span:nth-last-child(1)::after{
+  content: "购物车中还没有商品，赶紧选购吧！";
+  
   width: 316px;
   position: absolute;
-  background-color:white;
-  
+  background-color:#fff;
+  display: none;
   right:0;
-
+  z-index:-1;
   box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-  overflow:hidden;
- 
+  height: 0;
 }
-#cartin{
-  display: block;
-  width:100%;
-  opacity: 0;
-  margin:auto;
-  border-bottom:1px solid rgba(0,0,0,0.15);
-  overflow-y: scroll;
-  max-height: 500px;
-}
-#cartin > span{
-  display: block;
-  height: 80px;
-  line-height: 80px;
-  width:100%;
-  position: relative;
-}
-#cartin > span >span{
-  margin-left:50px;
-}
-#cartin > span >span:hover{
+.header-right span:nth-last-child(1):hover{
   color:orange;
+  background-color: #fff;
 }
-#cartin img{
-  vertical-align: middle;
-  position:absolute;
-  left: 10px;
-  top:0;
-  bottom:0;
-  margin:auto;
-}
-#cartin .bottomfix{
-  background-color:rgb(250,250,250);
-  position: absolute;
-  width:100%;
- 
-  height: 60px;
-  bottom:0;
-}
-#cartin .bottomfix .price{
-  float: left;
-  margin:10px;
-}
-#cartin .bottomfix .price span{
-  font-size:14px;
-  color:orange;
-  font-weight: bold;
-}
-#cartin .bottomfix .go{
-  float:right;
-  width:100px;
-  height:40px;
-  background-color: orange;
-  color:white;
-  line-height: 40px;
-  margin-top:10px;
-}
-
-.cart:hover > .cartout{
-
+.header-right span:nth-last-child(1):hover::after{
+  line-height: 100px;
   color:black;
-
-  max-height:500px;
-  transition: ease-in 0.3s;
+  top:40px;
+  height:100px;
+  transition: height .4s;
   z-index:4;
- 
-
+  display: block;
 }
-.cart:hover #cartin{
-  opacity: 1;
-}
-
 .logo{
   width: 55px;
   height: 55px;
@@ -228,8 +157,7 @@ main{
 .search-hide span:hover{
   background-color: rgb(250 250 250);
 }
-/*整个页面focus只能有一个，想点击下拉后的元素，上一个focus被取消导致下拉窗口马上消失，不能够点击下拉后的元素。 解决方法：下拉后的内容被hover的时候内容持续保持下拉状态*/
-.search input:focus ~ .search-hide{
+.search input:hover ~ .search-hide{
   display: block;
 }
 .search-hide:hover{
@@ -277,22 +205,6 @@ main{
   z-index: 2;
   background-color: #fff;
 }
-/*让元素宽度撑满整个画面的方法
-1.padding和负margin足够大
-2.父元素相对于宽度为屏幕大小的上一层，之后本本宽度对于父元素100%即可*/
-.nav-hidden-contain{
-  background-color: #fff;
-  top:100px;
-  left: -120%;
-  max-height: 0;
-  overflow: hidden;
-  padding-left:2000px;
-  padding-right:2000px;
-  margin-left:-1000px;
-  margin-right:-1000px;
-  border:0.5px solid  #e0e0e0;
-}
-
 .nav-hidden-contain ul{
 
   list-style: none;
@@ -337,22 +249,41 @@ main{
   top:40px;
   
 }
+.nav-hidden-contain ul::after{
+  content: "";
+  display: block;
+  position: absolute;
+  width: 150vw;
+  height: 230px;
+  background-color:#fff;
+  left: -350px;
+  z-index: -1;
+  border:1px solid #e0e0e0;
 
+}
+.nav-hidden-contain{
+  
+  top:100px;
+  left: 0;
+  display: none;
+}
 
 .nav-hidden-contain li{
   width: 180px;
 }
-
-/*hover的对象变更时，背景不变只有内容变更方法：hover ul外元素的时候全部的隐藏内容重叠显示， 之后hover li单个元素的时候让相应的内容z-index变更显示*/
-.nav-top ul:hover  div{
-  max-height: 230px;
-  transition: 0.5s;
+.nav-top li:first-child:hover + div{
+  display: block;
 }
 
-.nav-top > ul > li:hover + div{
- z-index: 50;
+.nav-top li:nth-child(3):hover + div{
+  display: block;
 }
-
+.nav-hidden-contain:hover{
+  display: block;
+}
+.nav-top li:nth-child(5):hover + div{
+  display: block;
+}
 .nav-top li:hover{
   cursor: pointer;
   color: #ff6700;
@@ -397,40 +328,31 @@ main{
   line-height: 46px;
   padding-left: 20px;
 }
-/*里面的内容垂直排序，而且包含块宽度未定，背景颜色铺满
-方法：用flex 垂直排列， 给外元素添加after伪元素设定glow为1把剩下内容沾满，背景颜色跟正常的内元素相同*/
+
 .side-nav div{
-  Xwidth:994px;
+  width:994px;
   height:460px;
   position: absolute;
   left: 234px;
   top:0;
 
-  padding-left: 15px;
-  Xdisplay: none;
+  padding: 15px;
+  display: none;
   background-color: #fff;
   color:black;
-  opacity: 0;
-  display: flex;
-  flex-flow: column wrap;
 }
-.side-nav div:after{
-  content:"";
-  flex-grow: 1;
-  background-color: #fff;
-}
+
 .side-nav div span{
   display: inline-block;
   width: 230px;
   height: 75px;
   line-height: 75px;
   cursor: pointer;
-  background-color: #fff;
+
 }
 
 .side-nav li:hover > div{
-  Xdisplay: block;
-  opacity: 1;
+  display: block;
 }
 .side-nav li::after{
   content:">";
@@ -794,38 +716,30 @@ transition: .5s;
 .row-box2 .block:hover::after{
   height: 60px;
   transition: .5s;
-} 
-.row-box2 .header > div{
- 
-  visibility:hidden;
-  transition:visibility 999s;
+}
+.row-box2 .header .middle{
+  display: none;
+
 }
 .row-box2 .header .midone{
-  visibility:visible;
+  display: block;
 }
 
 .header span:nth-child(2):hover ~ .midone{
-  Xdisplay: block;
+  display: block;
   cursor: pointer;
-  visibility: visible;
 }
 .header span:nth-child(3):hover ~ .midtwo{
-  Xdisplay: block;
+  display: block;
   cursor: pointer;
-  visibility: visible;
 }
 .header span:nth-child(4):hover ~ .midthree{
-  Xdisplay: block;
+  display: block;
   cursor: pointer;
-  visibility: visible;
 }
 .header span:nth-child(5):hover ~ .midfour{
-  Xdisplay: block;
-  visibility: visible;
+  display: block;
  
-}
-.header span:hover ~ div{
-  transition:none;
 }
 .header span:nth-child(n+2):nth-last-child(n+1){
   display:block;
@@ -839,19 +753,10 @@ transition: .5s;
   
   z-index: 2;
 }
-.header:hover .d{
-  Xcolor:black;
-  transition:0s 0s;
-} 
-.header .d:hover{
+.header span:nth-child(n+2):nth-last-child(n+1):hover{
   color:orange;
-  transition: 0s 0s;
 }
-.header .d{
-  transition:999s 999s;
-}
-
-.header span:nth-child(n+2):nth-last-child(n+1)::after{
+.header span:nth-child(n+2):nth-last-child(n+1):hover::after{
   content: "";
   display: block;
   width: 30px;
@@ -860,14 +765,6 @@ transition: .5s;
   position: absolute;
   left: 25px;
   top:25px;
-  visibility: hidden;
-  Xtransition: 0s 999s;
-}
-
-.header span:nth-child(n+2):nth-last-child(n+1):hover::after{
-  
-  visibility: visible;
-  Xtransition: none;
 }
 
 .row-box2 .header .midtwo:hover{
@@ -877,7 +774,7 @@ transition: .5s;
 .row-box2 .header .midone:hover,.row-box2 .header .midthree:hover,.row-box2 .header .midfour:hover{
   display: block;
   cursor: pointer;
-} 
+}
 .row-box3{
   margin-top:80px;
 }
@@ -1149,9 +1046,4 @@ transition: .5s;
 }
 .row-content .first4{
   border-top:1px solid #2196f3;
-}
-/* video */
-.video img{
-  width: 296px;
-  height: 180px;
 }

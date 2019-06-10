@@ -233,45 +233,43 @@ body{
 /* tplwrapper2 */
 .tplwrapper2{
   width:100%;
-  height:3.38rem ;
+  height:3.35rem ;
   display:flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin:0;
   padding:0; 
   margin-top:0.2rem;
-  align-items:space-between;
+  align-content:space-between;
   background-color: #fff;
 }
 .tplwrapper2 .imgs{
-  width: 100%; 
-  height: 100%; 
   background-repeat: no-repeat; background-position: center;
   background-size: cover;
 }
 .tplwrapper2 .imgone{
   background-image: url("ren.png"); 
-  width:2.38rem;
+  width:calc(66.6% - 1px);
   height: 1.20rem;
 }
 .tplwrapper2 .imgtwo{
   background-image: url("ji.png"); 
-  width:1.17rem;
+  width:calc(33.3% - 1px);
   height: 1.20rem;
 }
 .tplwrapper2 .imgthree{
   background-image: url("https://gw.alicdn.com/imgextra/i2/21/TB2xOlRXIaCJuJjy1zcXXXPgFXa_!!21-0-luban.jpg_200x200q85s150.jpg_.webp");
-  width:1.17rem;
+  width:calc(33.3% - 1px);
   height: 1.20rem
 }
 .tplwrapper2 .imgfour{
   background-image: url("https://gw.alicdn.com/imgextra/i4/145/TB2z8zOhMLD8KJjSszeXXaGRpXa_!!145-0-luban.jpg_200x200q85s150.jpg_.webp");
-  width:1.17rem;
+  width:calc(33.3% - 2px);
   height: 1.20rem
 }
 .tplwrapper2 .imgfive{
   background-image: url("https://gw.alicdn.com/imgextra/i1/166/TB2QTt7hx6I8KJjSszfXXaZVXXa_!!166-0-luban.jpg_200x200q85s150.jpg_.webp");
-  width:1.17rem;
+  width:calc(33.3% - 1px);
   height: 1.20rem;
 }
 .tplwrapper2 .text {
