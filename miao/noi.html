@@ -917,7 +917,7 @@ console.log(arr[0])
 </script>
 
 
-<script id="ch0106/29" Xtype="xxx">
+<script id="ch0106/29" type="xxx">
 var n = prompt("输入整数n")
 var arr = []
 var newArr =""
@@ -926,7 +926,7 @@ if(n>=0){
    arr[n.length - i - 1] = n[i]
 }
 for(var k = 0 ; k < (n.length) ; k++){
-  if(arr[k] !== 0){
+  if(Number(arr[k]) !== 0){
     for(var j = k ; j < (n.length) ; j++){
       newArr += arr[j]
       
@@ -940,8 +940,9 @@ for(var k = 0 ; k < (n.length) ; k++){
    arr[n.length - i - 1] = n[i]
 }
 for(var k = 0 ; k < (n.length) ; k++){
-  if(arr[k] !== 0){
-    for(var j = k ; j < (n.length) ; j++){
+  if(Number(arr[k]) !== 0){
+      newArr = "-"
+    for(var j = k ; j < (n.length-1) ; j++){
       newArr += arr[j]
       
     }
@@ -952,4 +953,305 @@ for(var k = 0 ; k < (n.length) ; k++){
 }
 
 console.log(newArr)
+</script>
+
+
+
+<script id="ch0106/30" type="xxx"> 
+var m = prompt("输入正整数m")
+var k = prompt("3的个数k")
+var numb = 0
+for(var i = 0 ; i < m.length ; i++){
+  if(m[i] == 3 ){
+     numb ++
+  }
+}
+if(numb == k && Number(m) % 19 == 0){
+  console.log("YES")
+}else{
+  console.log("NO")
+}
+
+</script>
+
+
+<script id="ch0106/31" type="xxx"> 
+var N = prompt("N盏灯")
+var M = Number(prompt("有M个人"))
+var arrd =[]
+var result = ""
+for(var i = 1; i <= N ; i++){
+  arrd.push(0) 
+}
+for (var j = 1 ; j <= M ; j++){
+  if(j == 1){
+    for(var k = 1 ; k <= arrd.length ; k++){
+      if(k % (j+1)  == 0){
+        arrd[k-1] = 1
+      }
+    }
+  }else{
+    for(var f = 1 ; f <= arrd.length ; f++){
+      if(f % (j+1)  == 0){
+        if(arrd[f - 1] == 1){
+          arrd[f - 1] = 0
+        }else if(arrd[f - 1] == 0){
+          arrd[f - 1] = 1
+        }
+        
+      }
+    }
+  }
+}
+
+for(var numb = 0 ;numb < arrd.length ; numb++){
+  if(arrd[numb] ==0 ){
+    result += " " + (numb + 1)
+  }
+}
+console.log(result)
+
+</script>
+
+
+<script id="ch0106/32" type="xxx">
+var n = Number(prompt("正整数n"))
+var up = 2
+var preup 
+var down = 1
+var arr = [2]
+var result = 0
+for(var i = 1 ; i < n ; i++){
+preup = up
+up = up + down
+down = preup
+arr.push(up / down)
+}
+for(var j = 0 ; j < n ; j++){
+  result += Number(arr[j])
+}
+console.log(result.toFixed(4))
+ </script>
+
+<script id="ch0106/33" type="xxx">
+var n = Number(prompt("正整数n"))
+var result = 0
+for(var i = 1 ;i <= n ; i++){
+  result += Number((-1) ** (i-1) * 1 / i)
+}
+console.log(result.toFixed(4))
+</script>
+
+
+<script id="ch0106/34" type="xxx">
+function factorial(n){
+  if(n == 1){
+    return  1
+  }else{
+    return n * factorial(n - 1)
+  }
+}
+var m = Number(prompt("正整数"))
+var result = 0
+for(var i = 1 ; i <= m ; i++){
+  result += factorial(i)
+}
+console.log(result)
+
+</script>
+
+<script id="ch0106/35" type="xxx">
+function factorial(n){
+  if(n == 1){
+    return  1
+  }else{
+    return n * factorial(n - 1)
+  }
+}
+var m = Number(prompt("正整数"))
+var result = 1
+for(var i = 1 ; i <= m ; i++){
+  result += (1 / factorial(i))
+}
+console.log(result.toFixed(10))
+</script>
+
+<script id="ch0106/36" type="xxx">
+var x = Number(prompt("单精度浮点数x"))
+var n = Number(prompt("正整数n"))
+var result = 0
+for(var i = 0 ; i <= n ; i++){
+  result += (x ** (n-i))
+}
+console.log(result.toFixed(2))
+</script>
+
+<script id="ch0106/37" type="xxx">
+var M = Number(prompt("体力最大值为M"))
+var N = Number(prompt("战斗期开始时的战斗力n"))
+var X = Number(prompt("X个能量元素"))
+for(var i = 0 ; ; i++){
+  N += parseInt(M / N)
+  X -= parseInt(M / N)
+  if(N > M){
+    console.log(N)
+    break
+  }
+}
+</script>
+
+<script id="ch0106/38" type="xxx">
+var n = Number(prompt("多项式的最高次幂为n"))
+var f = []
+var sum = 0
+var result =""
+for (var i = n ; i >= 0 ; i--){
+  var c = Number(prompt("幂次为" + i + "的项的系数"))
+  f.push( c * i )
+  sum += (c * i)
+}
+if(sum == 0){
+  console.log(0)
+}else{
+  for(var j = 0 ; j < (f.length - 1)  ; j++){
+    result += " " + f[j]
+  }
+  console.log(result)
+}
+
+</script>
+
+
+<script id="ch0106/39" type="xxx">
+var n = prompt("正整数n")
+var result = 0
+for (var i = 1 ; i < Number(n); i++){
+    if(i % 7 !== 0 && ( parseInt(i / 10 ) !== 7) && (i - parseInt(i / 10 ) * 10 !== 7 )){
+      result += (i * i)
+    }
+}
+console.log(result)
+</script>
+
+<script id="ch0106/40" type="xxx">
+var n = prompt("正整数n")
+var result = 0
+for (var i = 1 ; i <= Number(n); i++){
+  i = String(i)
+  for( var j = 0 ; j < i.length ; j++){
+    if(i[j] == 1){
+      result ++
+    }
+  }
+}
+console.log(result)
+</script>
+
+<script id="ch0106/41" type="xxx">
+var l = Number(prompt("正整数 范围L"))
+var r = Number(prompt("正整数 范围r"))
+var result = 0
+for (var i = l ; i <= r; i++){
+  i = String(i)
+  for( var j = 0 ; j < i.length ; j++){
+    if(i[j] == 2){
+      result ++
+    }
+  }
+}
+console.log(result)
+</script>
+
+<script id="ch0106/42" type="xxx">
+var h = Number(prompt("矩形的高"))
+var w = Number(prompt("矩形的宽"))
+var m = prompt("画图的矩形符号")
+var body = Number(prompt("空心实心"))
+var result =""
+for (var i = 1 ; i <= h ; i++){
+  for(var j = 1 ; j <= w ; j++){
+    if( body == 1){
+      result += m
+    }else if( body == 0){
+      if(i == 1 || i == h){
+        result += m
+      }else{
+        if( j == 1 || j == (w)){
+          result += m
+        }else{
+          result += " "
+        }      
+      }
+    }
+    if( j == w){
+      result += ("\n")
+    }
+  }
+}
+console.log(result)
+</script>
+
+
+<script id="ch0106/43" type="xxx">
+var n , m
+var h = Number(prompt("正整数 n 是两个不同的质数的乘积"))
+ for( n = 2 ; n <= h ; n++){
+   if(n !== ((n == 1) || (n % 2 == 0 && n >= 4) || (n % 3 == 0 && n >= 6) 
+       ||(n % 5 == 0 && n >=10) || (7 % 2 == 0 && n >= 14))){
+        m = h / n
+  if(m % 1 === 0 && m !== ((m == 1) || (m % 2 == 0 && m >= 4) || (m % 3 == 0 && m >= 6) 
+       ||(m % 5 == 0 && m >=10) || (7 % 2 == 0 && m >= 14))){
+      if(m > n){
+        console.log(m)
+      }else{
+        console.log(n)
+      }
+      break
+    }
+  }
+ }
+</script>
+
+<script id="ch0106/44" type="xxx">
+    function isPrinme(n) {
+        if(n == 0 || n == 1){
+            return false
+        }else if(n == 2 || n == 3 || n == 5 || n == 7){
+            return true
+        }else {
+          for(var i = 2;i < n; i++){
+            if(n % i == 0){
+              return false
+            }
+          }
+          return true     
+        }      
+    }
+
+ var n = Number(prompt("第n小的质数"))
+ var i = 0
+   for(var j = 2 ; ;j++){
+     if(isPrinme(j)){
+           i++
+         } 
+     if( i == n){
+       console.log(j)
+       break
+     }
+ }
+</script>
+
+<script id="ch0106/45" type="xxx">
+var n = Number(prompt("一个整数（范围1到10000），表示天数。"))
+var day = 0
+var result = 0
+for(var i = 1 ; ; i++ ){
+  day += i
+  result  += i * i 
+  if(day >= n){
+   result -= (day - n) * i
+   break
+  }
+}
+console.log(result)
 </script>
