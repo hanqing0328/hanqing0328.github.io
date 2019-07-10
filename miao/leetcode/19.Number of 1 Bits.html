@@ -1,0 +1,18 @@
+
+<script>
+/**
+ * @param {number} n - a positive integer
+ * @return {number}
+ 读取某个数的二进制里的1的个数的方法:与1做按位与运算
+ 方法2：与（n-1）做按位与运算
+ */
+ var hammingWeight = function(n) {
+   var count = 0
+   while(n > 0){
+    if(n & 1){
+      count++
+    }
+    n >>> 1
+   }
+ }
+</script>

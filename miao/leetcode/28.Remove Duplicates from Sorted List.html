@@ -1,0 +1,24 @@
+<script>
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }Input: 1->1->2->3->3  Output: 1->2->3
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+ var removeDuplicates = function(head) {
+    var nextPointer = 0 
+    for(var i = 0 ; i < head.length ; i++){
+      if(head[i] !== head [i - 1]){
+        head[nextPointer] = head[i]
+        nextPointer++
+      }
+    }
+ 
+    return nextPointer
+  };
+</script>

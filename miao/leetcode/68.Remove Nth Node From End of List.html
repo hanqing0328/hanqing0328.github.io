@@ -1,0 +1,43 @@
+
+
+<script>
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+ 
+ var removeNthFromEnd = function(head, n) {
+  
+  var header = head
+  var sign = head
+  var c = 0
+   while(head){
+     c++
+     head = head.next
+   }
+   if(c == n){
+     return header.next
+   }
+   var count = c - n
+
+   while(count > 1){
+     count--
+     header = header.next
+   }
+      if(n == 1){
+      header.next = null
+  }else{
+     header.next = header.next.next
+  }
+     
+   return sign
+ };
+</script>

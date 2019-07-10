@@ -1,0 +1,57 @@
+<script>
+/**
+ * @param {number[]} nums
+ * @return {number}
+ *Input: [3,0,1]  Output: 2
+ *数组内容跟数组下标一致，把数组的数字跟标记数组的下标一一对应
+ * 方法1：制作空数组全是0，跟数组里的数字对应的下标位置的数改成1
+ */
+ var missingNumber = function(nums) {
+    var flags = []
+    var length = nums.length
+    for(var i = 0 ; i <= length; i++){
+      flags[i] = 0
+    }
+    for(var j = 0 ; j < length ; j++){
+      var idx = nums[j]
+      flags[idx] = 1
+    }
+    return flags.indexOf(0)
+  };
+</script>
+
+<script>
+/*
+方法2：本该数求和 - 现有数求和 = 要找的数  等差数列求和：n*(n+1)/2
+ */
+ var missingNumber = function(nums) {
+  var n = nums.length
+  var numsOfSum = 0
+  var sum = (n + 1) * n / 2 
+  for(var i = 0 ; i < n ; i++){
+    numsOfSum += nums[i]
+  }
+ return (sum - numsOfSum)
+ }
+
+
+</script>
+
+<script>
+  /*
+  方法2简洁版：
+   */
+   var missingNumber = function(nums) {
+    var n = nums.length
+    //var numsOfSum = 0
+    var sum = (n + 1) * n / 2 
+    for(var i = 0 ; i < n ; i++){
+      //numsOfSum += nums[i]
+      sum -= nums[i]
+    }
+   //return (sum - numsOfSum)
+   return (sum）
+   }
+  
+  
+  </script>

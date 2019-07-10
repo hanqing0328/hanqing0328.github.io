@@ -1,0 +1,47 @@
+<script>
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {ListNode}
+ */
+ var rotateRight = function(head,k) {
+   if(!head){
+       return head
+   }
+   if(k <= 0){
+     return head
+   }else{
+    var header = head
+ 
+    if(head.next == null){
+       
+        return head
+    }
+    var count = 2
+    while(head.next.next !== null){
+       count++
+      head = head.next
+    }
+    var k = k % count 
+    if(k <= 0){
+      return header
+    }
+    var result = {
+      val:head.next.val,
+      next:header
+    } 
+   
+    head.next = null
+    return rotateRight(result,--k)
+   }
+    
+  };
+
+</script>

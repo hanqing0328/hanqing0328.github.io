@@ -1,0 +1,23 @@
+
+<script>
+/**
+ * @param {number[]} nums
+ * @return {number}
+ * 每次变化n-1个数，每次变化1，直到n个数大小都相同，求出步数
+ *Input:[1,2,3]   Output:3
+ * 逆转思维：题目说每一步要增加， 转换成全部元素退化到最小需要几步
+ */
+ var minMoves = function(nums) {
+    var l = nums.length
+    var min = Infinity
+    var sum = 0
+    for(var i = 0 ; i < nums.length ; i++){
+      if(nums[i] < min){
+        min = nums[i]
+      }
+       sum += nums[i]
+    }
+   return sum - min * l
+  };
+
+</script>

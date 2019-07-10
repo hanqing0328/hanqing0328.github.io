@@ -1,0 +1,41 @@
+
+
+<script>
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+ var findWords = function(words) {
+    var map = {one:["q","w","e","r","t","y","u","i","o","p"],two:["a","s","d","f","g","h","j","k","l"],three:["z","x","c","v","b","n","m"],} 
+   var result = []
+   
+   for(var i = 0 ; i < words.length ; i++){
+    var preAddress = ""
+    var sign = true
+     for(var j = 0 ; j < words[i].length ; j++){
+       var letter = words[i][j].toLowerCase()
+       if(map["one"].indexOf(letter) !== -1){
+         var address = "one"
+       }
+       if(map["two"].indexOf(letter) !== -1){
+         var address = "two"
+       }
+       if(map["three"].indexOf(letter) !== -1){
+         var address = "three"
+       }
+       if(j == 0){
+        preAddress = address
+       }else{
+        if(preAddress !== address){
+          sign = false
+          break
+        }
+       } 
+     }
+     if(sign !== false){
+      result.push(words[i])
+     }  
+   }
+   return result
+  };
+</script>

@@ -1,0 +1,21 @@
+
+<script>
+/**
+ * @param {number} num
+ * @return {string}
+ */
+ var convertToBase7 = function(num) {
+    var number = num > 0 ? num : -num
+    var result = ""
+    if(num == 0){
+      return "0"
+    }
+    while(number > 0){
+      var digit = number % 7
+      result = digit + result
+      number = (number - digit) / 7
+    }
+    return num > 0 ? result  : "-" + result
+  };
+  
+</script>

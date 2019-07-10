@@ -1,0 +1,40 @@
+
+<script type="one ben">
+/**
+ * @param {number} num
+ * @return {boolean}
+ */
+var isPerfectSquare = function(num) {
+    for(var i = 1 ; i <= num  ; i++){
+      if( i * i == num){
+        return true
+      }
+    }
+    return false
+};
+
+</script>
+
+<script >
+  /**
+ * @param {number} num
+ * @return {boolean}
+ * 二分法
+ */
+var isPerfectSquare = function(num) {
+   var low = 1
+   var high = num
+   while(high - low >= 1){
+     var mid = (low + high)>>1
+     if(mid * mid > num){
+       high = mid
+     }else if(mid * mid < num){
+       low = mid
+     }else{
+       return true
+     }
+   }
+   return false
+};
+
+</script>

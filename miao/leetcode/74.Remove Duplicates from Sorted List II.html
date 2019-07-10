@@ -1,0 +1,77 @@
+<script>
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+ var deleteDuplicates = function(head) {
+   var header = head
+   if(head == null){
+     return null
+   }
+   if(header.next == null){
+     return head
+   }
+   var cache = []
+   var prehead = head
+    while(head){
+      if(head.next == null){
+        if(head.val == header.val){
+           if(cache.indexOf(head.val) == -1){
+              return header
+                }else{
+                return null
+              }
+        }else{
+          if(cache.indexOf(head.val) > -1){
+              prehead.next = null
+              return header
+          }else{
+              return header
+          }
+        }
+        
+      }
+      if(head.val == head.next.val){
+        cache.push(head.val)
+        if(head.val == header.val){
+          if(head.next.next == null){
+            return null
+          }
+          header.val = head.next.next.val
+          header.next = head.next.next.next
+          head = header
+          prehead = header
+        }else{
+          prehead.next = head.next.next
+          head = prehead.next
+        }
+      }else{
+        if(cache.indexOf(head.val) > -1){
+          if(header.val == head.val){
+            header.val = head.next.val
+            header.next = head.next.next
+            prehead = header
+            head = header
+
+          }else{
+            prehead.next = head.next
+            head = prehead.next
+          }     
+        }else{
+          cache.push(head.val)
+          prehead = head
+          head = head.next
+        }
+      }
+
+    }
+    return header
+  };
+</script>

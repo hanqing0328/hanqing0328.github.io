@@ -1,0 +1,153 @@
+<script>
+/**
+ * @param {string} num1
+ * @param {string} num2
+ * @return {string}
+ */
+var multiply = function(num1, num2) {
+
+function stringToArray(s) {
+    var newArry = s.split('')
+    for (var i = 0; i < newArry.length; i++) {
+        newArry[i] = Number(newArry[i])
+    }
+    return newArry
+}
+
+function addString(a, b) {
+    var carry = 0
+    var m = stringToArray(a)
+    var n = stringToArray(b)
+    var aL = a.length - 1
+    var bL = b.length - 1
+    var result = ""
+    while (aL >= 0 && bL >= 0) {
+        var digit = (m[aL] + n[bL] + carry) % 10
+        result = digit + result
+        carry = (m[aL] + n[bL] + carry - digit) / 10
+        aL--
+        bL--
+    }
+
+    while (aL >= 0) {
+        var digit = (m[aL] + carry) % 10
+        result = digit + result
+        carry = (m[aL] + carry - digit) / 10
+        aL--
+    }
+    while (bL >= 0) {
+        var digit = (n[bL] + carry) % 10
+        result = digit + result
+        carry = (n[bL] + carry - digit) / 10
+        bL--
+    }
+    if (aL < 0 && bL < 0 && carry !== 0) {
+        result = carry + result
+    }
+    return result
+}
+
+var arr1 = stringToArray(num1)
+var arr2 = stringToArray(num2)
+var carry = 0
+var inner = ""
+var out = ""
+var x = 0
+if (num1.length == 1 && arr1[0] == 0 || num2.length == 1 && arr2[0] == 0) {
+    return '0'
+}
+for (var i = num1.length - 1; i >= 0; i--) {
+    for (var j = num2.length - 1; j >= 0; j--) {
+        var digit = (arr1[i] * arr2[j] + carry) % 10
+        inner = digit + inner
+        carry = (arr1[i] * arr2[j] + carry - digit) / 10
+        if (j == 0 && carry !== 0) {
+          inner = carry + inner
+        }
+    }
+
+    for (var f = 0; f < x; f++) {
+        inner = inner + 0
+    }
+    x++
+    out = addString(out, inner)
+    inner = ""
+    carry = 0
+}
+return out
+};
+
+</script>
+
+
+<script>
+/* 
+思路2：用数组把所有n*0到1的数先都存下来，后面直接调用
+ */
+ function stringToArray(s) {
+    var newArry = s.split('')
+    for (var i = 0; i < newArry.length; i++) {
+        newArry[i] = Number(newArry[i])
+    }
+    return newArry
+}
+function addString(a, b) {
+    var carry = 0
+    var m = stringToArray(a)
+    var n = stringToArray(b)
+    var aL = a.length - 1
+    var bL = b.length - 1
+    var result = ""
+    while (aL >= 0 && bL >= 0) {
+        var digit = (m[aL] + n[bL] + carry) % 10
+        result = digit + result
+        carry = (m[aL] + n[bL] + carry - digit) / 10
+        aL--
+        bL--
+    }
+
+    while (aL >= 0) {
+        var digit = (m[aL] + carry) % 10
+        result = digit + result
+        carry = (m[aL] + carry - digit) / 10
+        aL--
+    }
+    while (bL >= 0) {
+        var digit = (n[bL] + carry) % 10
+        result = digit + result
+        carry = (n[bL] + carry - digit) / 10
+        bL--
+    }
+    if (aL < 0 && bL < 0 && carry !== 0) {
+        result = carry + result
+    }
+    return result
+}
+ var multiply = function(num1, num2) {
+
+    var n = num1.length > num2.length? Number(num1):Number(num2)
+    var m = num1.length <= num2.length? num1:num2
+    var lm = m.length - 1
+    var bank = [0]
+    for(var i = 0 ; i < 9 ; i++){
+        bank[i + 1] = bank[i] + n
+    }
+
+    var m = stringToArray(m)
+    var sum = "0"
+    var inner = ""
+    var x = 0
+    for(var j = lm ; j >= 0 ; j--){
+        var idx = m[j]
+       inner =  bank[idx]
+       inner = String(inner)
+       for (var f = 0; f < x; f++) {
+        inner = inner + 0
+    }
+    x++
+       sum = addString(sum,inner)
+       
+    }
+    return sum
+ }
+</script>

@@ -1,0 +1,68 @@
+<script>
+  /**
+   * @param {number} num
+   * @return {number[]}
+   * Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1's in their binary representation and return them as an array.
+   * 输入一个数，从0开始到那个数，每个数的2进制里的1的个数
+   * Input: 5     Output: [0,1,1,2,1,2]
+   * 方法1：每个数字变成2进制再组合进去
+   */
+   var countBits = function(num) {
+      var result = [0]
+      for(var i = 1 ; i <= num ; i++){
+        result[i] = toBi(i)
+      }
+      
+      function toBi(n){
+        var count = 0
+        while(n > 0){
+          if(n % 2 == 1){
+            count++
+          }
+          n >>= 1
+        }
+        return count
+      }
+      return result
+  };
+
+</script>
+
+<script>
+  /* 
+  方法2：1. 二进制每逢2的n次方对比2的n-1次方多一个0，就像10进制每逢100，1000，多一个0一样。所以数字二进制宽度增加的固定周期就是2的n次方，也就是2*2*2*2.。。
+         2. 每个数的二进制的1的个数等于减去临近2^n的十进制数的二进制的1的个数再加上1 ， 也就是说数的二进制下把最左边的1抹掉，最后再加上1
+         3. 反推：想要抹掉数字的二进制下的最左边的1，就要减去临近的2的n次方. 判断最邻近的2的n次方的方法： if(i == 2 * period){period *= 2}
+         4. 因为2的时候没有相应周期规律，应当特殊处理。 再然后因为每次2的n次方总是只有1个1，故直接全部特殊处理
+  *
+  */
+  var countBits = function(num) {
+    var result = [0]
+    var period = 1
+    for(var i = 1 ; i <= num ; i++){
+      if(i == 2 * period){
+        result[i] = 1
+        period *= 2
+      }else{
+        result[i] = result[i - period] + 1
+      }     
+    }
+    return result
+  }
+</script>
+
+
+<script>
+/* 
+方法3：查询从0到n的二进制数的前后两个数的规律。 n和n-1每次做按位与运算，就会少一个最右边的一个1
+思路：根据与前一个数的关系，先把二进制的最右边的1减去，最后加上1就等于本身的1的个数
+*/
+var countBits = function(num){
+  var result = [0]
+  for(var i = 1; i <= num ; i++){
+    result[i] = result[ i & (i - 1)] + 1 
+  }
+  return result
+}
+
+</script>

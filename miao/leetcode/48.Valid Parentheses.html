@@ -1,0 +1,49 @@
+
+<script>
+/**
+ * @param {string} s
+ * @return {boolean}
+ * 栈：先进后出
+ */
+ var isValid = function(s) {
+    var one = '('
+    var One = ')'
+    var two = '{'
+    var Two = '}'
+    var three = '['
+    var Three = ']' 
+    var newarr = []
+    for(var i = 0 ; i < s.length ; i++){
+      if(s[i] == one || s[i] == two || s[i] == three){
+        newarr.push(s[i])
+      }
+      if(s[i] == One){
+        if(newarr[newarr.length - 1] == one){
+          newarr.pop()
+        }else{
+          return false
+        }
+      }
+      if(s[i] == Two){
+        if(newarr[newarr.length - 1] == two){
+          newarr.pop()
+        }else{
+          return false
+        }
+      }
+      if(s[i] == Three){
+        if(newarr[newarr.length - 1] == three){
+          newarr.pop()
+        }else{
+          return false
+        }
+      }
+
+    }
+    if(newarr.length == 0){
+      return true
+    }else{
+      return false
+    }
+  };
+</script>

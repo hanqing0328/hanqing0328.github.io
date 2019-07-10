@@ -1,0 +1,82 @@
+<script type="one">
+/**sqrt
+ * @param {number} x
+ * @return {number}
+ */
+
+ var mySqrt = function(x) {
+   var n = x / 2
+   if(x <= 1){
+     console.log(x)
+     return x
+   }else{
+   for(var i = x / 4 ; i <= x / 2 ;){
+   if(i * i - x >= 1){
+     i -= (n / 2)
+     n = n / 2
+   }else if(i * i - x < 0){
+     i += (n / 2)
+     n = n / 2
+   }
+   if(0 <= (i * i - x) && (i * i - x) < 1){
+     i = parseInt(i)
+     console.log(i)
+     return i
+     }
+    }
+    i = parseInt(i)
+     console.log(i)
+     return i
+   }
+  };
+  mySqrt(8)
+
+</script>
+
+<script type="xxx">
+  /**
+  *牛顿法：x1=x0-f(x0)/f'(x0)
+  * 求平方根的f(x)=x^2 - n=0 ==> x=saqrt(n)
+  *代入公式得：x1 = x0 - (x0 ^2 - n)/(2*x0)
+  */
+function mySqrt(x) {
+  var a = 2
+  for(var i = 0 ; i < 30 ; i++){
+
+  a = a - (a * a - x) / (2 * a)
+  }
+
+  a = parseInt(a)
+  return a
+}
+mySqrt(2147395599)
+</script>
+
+<script>
+/**
+*二分法：每次算出中间值比较，如果中间值比目的值小，需要在右范围查找，就把中间值赋给low值，如果更大把中间值赋给high值
+* 如果high和low的差值等于1，就把low值return即可
+*/
+function mySqrt(x) {
+  if(x == 0){
+      return 0
+  }
+  var low = 1
+  var high = x
+
+  while(high - low > 1){
+   var mid = ((high + low) >>> 1)
+  if(mid * mid > x){
+    high = mid
+  }else if(mid * mid < x){   
+    low = mid
+  }else{
+    return mid
+  }
+
+  }
+  return low
+  
+}
+
+</script>

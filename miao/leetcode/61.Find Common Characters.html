@@ -1,0 +1,21 @@
+<script>
+/**
+ * @param {string[]} A
+ * @return {string[]}
+ */
+ var commonChars = function(A) {
+  var map = []
+  var basic = A[0].split('')
+  for(var i = 1 ; i < A.length ; i++){
+    for(var j = 0 ; j < A[i].length ; j++){
+      if(basic.indexOf(A[i][j]) > -1){
+        map.push(A[i][j])
+        basic.splice(basic.indexOf(A[i][j]),1)
+      }
+    }
+    basic = map
+    map = []
+  }
+  return basic
+  };
+</script>

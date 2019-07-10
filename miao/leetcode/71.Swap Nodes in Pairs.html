@@ -1,0 +1,24 @@
+<script>
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+ var swapPairs = function(head) {
+   var header = head
+    if(!head){
+      return null
+    }
+    var cache = head.value
+    head.value = head.next.value
+    head.next.value = cache
+    head.next.next = swapPairs(head.next.next)
+    return header
+  };
+</script>

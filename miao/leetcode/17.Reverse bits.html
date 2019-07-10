@@ -1,0 +1,30 @@
+<script>
+/**
+ * @param {number} n - a positive integer
+ * @return {number} - a positive integer
+ */
+ var reverseBits = function(n) {
+  
+  var newBits = 0
+  for(var i = 0 ; i < 32 ; i++){
+    var digit = n % 2
+    newBits = newBits * 2 + digit
+    n = (n - digit) / 2
+  }
+  return newBits
+};
+
+</script>
+
+<script>
+ var reverseBits = function(n) {
+  
+  var newBits = 0
+  for(var i = 0 ; i < 32 ; i++){
+    var digit = (n >> i) & 1    //获取二进制最后一位
+    newBits = newBits << 1 + digit
+    n = (n - digit) / 2
+  }
+  return newBits >>> 0    //就算超出最大数也会按照无符号数输出，不会变成负数
+};
+</script>

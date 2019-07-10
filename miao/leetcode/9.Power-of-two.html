@@ -1,0 +1,90 @@
+<script Xtype="one">
+  /**
+   * @param {number} n
+   * @return {boolean}
+   * 除于2除到1为止就是2的n次方的数，如果得不到1就不是
+   */
+  var isPowerOfTwo = function(n) {
+      // if(n == 1){       ===> 1 % 2 == 1 可合并到下面while循环里
+      //   console.log("true")
+      //   return true
+      // }
+      
+      // while (n >= 2){
+      //   if(n % 2 !== 0){      ==》n % 2 条件可上加到while循环条件里
+      //     console.log("false")
+      //     return false
+      //   }
+      //   n = n / 2
+      //  if(n == 1){        ==》本身就是返回布尔，直接return即可
+      //   console.log("true")
+      //    return true
+      //  }
+      // }
+      // if(n < 2){    ===> 小于1即可
+      //   console.log("false")
+      //   return false
+      // }
+      
+  };
+  isPowerOfThree(16)
+</script>
+
+<script type="two">
+  /**
+   *思路： 1） 2 ^ n = x  ==> n是整数的话x就是power of two.
+          2） 算出n的方法为 log2（x）
+          3） 判断n是否整数的方法：是跟0做或运算，运算结果跟本身相同就说明是整数
+              扩展：所有的数参与位运算自动会转成整数，
+                    跟0做或运算返回本身
+              代码实现：return （r | 0）== r  注意：位运算一定要加上括号，不然先执行后面的==
+          4) 补充：如果判断语句本身返回true or false 就直接return本身就行，没必要加上if语句
+   */
+var isPowerOfTwo = function(x){
+  if(x < 0){
+    return false
+  }
+  var n = Math.log2(x)
+
+  // if(n | 0 == n){
+  //   return true
+  // }
+  // return false
+  //以上可优化成下面的形式
+
+  return (n | 0) == n
+}
+</script>
+
+<script type="three">
+/**
+*思路： 除于2改写成右位移1位， 注意如果数字过大超过2的31次方-1 即2147483647 位移就不再准确了
+*/
+var isPowerOfTwo = function(x){
+  if(x < 1){
+    return false
+  }
+ // while(x > 1){
+//上面的条件错误，因为位运算只会取整如果进入3就被整除变成1，所以要直接代入能被2整除的数字，应改写成如下条件
+while(x % 2 == 0){
+    x = (x >> 1)
+  }
+  return x == 1
+}
+</script>
+
+
+<script>
+/**
+*思路：1. 2^0=1 , 2^1=10 , 2^2=100 , 2^3=1000,...
+         也就是说2的n次方转二进制除了最左边第一位是1其它都是0
+      2. 与n-1的二进制 如8-1=7的二进制 0111做 与运算 结果为0的话能证明是2的n次方的数
+*/
+
+var isPowerOfTwo = function(n){
+  if(n < 1){
+    return false
+  }
+  return (n & (n - 1)) == 0
+}
+</script>

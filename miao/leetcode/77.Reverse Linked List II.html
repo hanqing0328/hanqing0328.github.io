@@ -1,0 +1,38 @@
+
+<script>
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} m
+ * @param {number} n
+ * @return {ListNode}
+ */
+ var reverseBetween = function(head, m, n) {
+   var header = head
+   var cache = []
+   var count = 0
+   while(count < n){
+    count++
+    if(count >= m){
+      if(count == m){
+        var sign = head
+      }
+      cache.push(head.val)
+    }
+    head = head.next
+   }
+   var length = cache.length
+   for(var i = length - 1 ; i >= 0 ; i--){
+     sign.val = cache[i]
+     sign = sign.next
+   }
+   return header
+  };
+  
+</script>

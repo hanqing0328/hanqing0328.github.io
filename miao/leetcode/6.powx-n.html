@@ -1,0 +1,147 @@
+<script type="one">
+  /**
+   *n转2进制，每逢1就乘
+   *前一位的x的平方等于后一位的x的原理
+   * @param {number} x
+   * @param {number} n
+   * @return {number}、
+   * n的二进制数来说方向是从右往左
+   */
+  
+  var myPow = function(x, n){
+    var result = 1
+    var j = n
+    if(n < 0){
+      n = -n
+    }  
+    var y = x
+    while(n >= 1){ 
+        if(n % 2 !== 0){
+        result *= y
+      }
+        n = parseInt(n / 2)
+        y = y * y
+      
+    }
+    if(j > 0){
+      console.log(result)
+      return result
+    }else if(j == 0){
+      console.log(1)
+      return 1
+    }else{
+      console.log(1 / result)
+      return(1 / result)
+    }
+  }
+  myPow(2,-3)
+
+  function myPow(x, n) {
+    var t = x
+    var r = 1
+  
+    while(n > 0) {
+      var d = n % 2
+      if (d) {
+        r *= t
+      }
+      t = t * t
+      n = n >> 1
+    }
+    
+    return r
+  }
+</script>
+
+<script type="two">
+/**
+* var sign = n > 0 ? 1 : -1
+* var t = Math.abs(n)
+* 思路： n^100 ->n^50 * n^50 -> n^50 * n^25 * n^25 -> n^50 * n^25 * n^12 * n^12 * n->n^50 * n^ 25 * n^12 * n * n^6 * n^6 ->3,3 -> 
+* 本来要运算100次如果这么算只算9次即可
+* n除于2的过程中每遇到偶数就是计算后一个数乘后一个数， 遇到奇数后一个数乘上后一个数再乘上n .n的二进制数来说方向是从右往左， 递归
+*/
+var myPow = function(x, n){
+  if(n == 0){
+    return 1
+  }
+  var t = Math.abs(n)
+  if(t % 2 == 0){
+    t = myPow(x,t/2)
+    t = t * t
+  }else{
+    t = myPow(x,(t - 1)/2)
+    t = t * t * x
+  }
+  if(n >= 0){
+    return t
+  }else{
+    return (1 / t)
+  }
+  
+}
+</script>
+
+<script type="three">
+  /**
+  * 方向是从小变大，从下到上，二进制数来说是从左往右
+  *1.取一个数字的二进制的宽度的方法1：Math.floor(Math.log2(n)) - 1?-->原理：2^0=1 , 2^1=10,2^2=100,2^3=1000  幂多少0多少，再向下取整
+  * 2. 2进制数从左往右取值的方法：n>>width -->原理：0100101 >> width(6) = 0    ==>  0100101 >> width(6-1) = 01
+  * 3. 之后判断最后一位是1还是0的方法，对2取余，如果是1就是1，如果不是就是0
+  * 4. 遇到奇数就是t*t*x  偶是 t*t
+  * 5. 设定一个变量t。传递每次计算的结果，用来下一次再利用。 t的初始值设定为1
+  */
+var myPow = function(x, n){
+  var sign = n > 0 ? 1 : -1
+  n = Math.abs(n)
+  var width = Math.floor(Math.log2(n))
+  var t = 1
+  while( width >= 0){
+  var digit = n >> width
+  if(digit % 2 == 1){
+    t = t * t * x
+  }else{
+    t = t * t 
+  }
+  width--
+  }
+  if(sign == 1){
+    return t
+  }else{
+    return 1 / t
+  }
+}
+</script>
+
+<script>
+/**
+*求一个数的二进制位宽的方法2：每次右移1位，count++。 直到数变成0
+*直到变成0就不再进行循环可直接写成while(n)
+*2147483648>>1就变成-2147483647，所以要用不保留符号位的>>>。这个只能用在只考虑正数的时候
+*/
+var myPow = function(x, n){
+  var sign = n > 0 ? 1 : -1
+  n = Math.abs(n)
+  var width = 0
+  while(n){
+    n >> 1
+    width++
+  }
+  var t = 1
+  while( width >= 0){
+  var digit = n >>> width
+  if(digit % 2 == 1){
+    t = t * t * x
+  }else{
+    t = t * t 
+  }
+  width--
+  }
+  if(sign == 1){
+    return t
+  }else{
+    return 1 / t
+  }
+}
+
+</script>

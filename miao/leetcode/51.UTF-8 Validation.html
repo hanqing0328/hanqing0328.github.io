@@ -1,0 +1,80 @@
+<script>
+/**
+ * @param {number[]} data
+ * @return {boolean}
+ */
+ var validUtf8 = function(data) {
+   function getcount(m){
+    var count = 0
+    var n = 7
+    while(m > 0){
+     if((m >>> n) == 0){
+      return count
+     }else{
+       m = m - 2 ** n
+       count ++ 
+       n--
+     }
+   }
+   }
+
+
+   if((data[0] & 128) == 0){
+    var count = 1
+   }else{
+    var count = getcount(data[0])
+   }
+
+   for(var i = 1 ; i < count ; i++){
+     if((data[i] & 192) !== 128){
+       return false
+     }
+   }
+   if(count < data.length){
+     data = data.slice(count)
+     return validUtf8(data)
+   }else if(count == data.length ){
+     return true
+   }
+
+ }
+</script>
+
+ <script>
+  var validUtf8 = function(data) {
+   function getcount(m){
+    var count = 0
+    var n = 7
+    while(m > 0){
+     if((m >>> n) == 0){
+      return count
+     }else{
+       m = m - 2 ** n
+       count ++ 
+       n--
+     }
+   }
+   }
+   if((data[0] & 128) == 0){
+    var count = 1
+   }else{
+    var count = getcount(data[0])
+   }
+
+   for(var i = 1 ; i < count ; i++){
+     if((data[i] & 192) !== 128){
+       return false
+     }
+   }
+   if(count < data.length){
+     for(var j = 0 ; j < count ; j++){
+       data.shift()
+     }
+     return validUtf8(data)
+   }else if(count == data.length ){
+     return true
+   }
+
+ }
+ 
+ </script>

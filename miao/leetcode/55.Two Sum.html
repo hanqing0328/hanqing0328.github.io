@@ -1,0 +1,23 @@
+
+
+<script>
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ * 思路：遍历到某一个数字的时候，先判断有没有一个数已经在map出现过，能满足条件的数。
+   如果没有就把这个数也放进去
+ */
+ var twoSum = function(nums, target) {
+    var map = []
+    for(var i = 0 ; i < nums.length ; i++){
+      var goal = target - nums[i]
+      if(map.indexOf(goal) !== -1){
+        return ([(map.indexOf(goal)),i])
+      }else{
+        map[i] = nums[i]
+      }
+    }
+  };
+
+</script>

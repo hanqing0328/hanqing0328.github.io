@@ -1,0 +1,21 @@
+<script>
+    /**
+     * @param {number[]} nums
+     * @param {number} val
+     * @return {number}
+     * 双指针
+     */
+    var removeElement = function(nums, val) {
+        var nonValointer = 0
+        var length = nums.length
+        for(var i = 0 ; i < length ; i++){
+          if(nums[i] !== val){
+            nums[nonValointer] = nums[i]
+            nonValointer++
+          }
+        }
+     
+        return nonValointer
+    };
+
+</script>

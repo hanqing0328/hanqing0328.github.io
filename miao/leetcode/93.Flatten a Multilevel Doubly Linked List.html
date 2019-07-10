@@ -1,0 +1,40 @@
+<script>
+/**
+ * // Definition for a Node.
+ * function Node(val,prev,next,child) {
+ *    this.val = val;
+ *    this.prev = prev;
+ *    this.next = next;
+ *    this.child = child;
+ * };
+ */
+/**
+ * @param {Node} head
+ * @return {Node}
+ */
+ var flatten = function(head) {
+ if(!head){
+     return null
+   }
+   var header = head
+    while(head){
+      if(head.child){
+        var children = flatten(head.child)
+        var after = head.next
+        head.next = children
+        children.prev = head
+        head.child = null
+        while(children && children.next ){
+          children  = children .next 
+        }
+        children.next = after
+          if(after){
+              after.prev = children        //注意：展平后回来发现后面没有元素就不需要连接后面的了
+          }
+          head = children
+      }
+      head = head.next
+    }
+   return header
+  };
+</script>

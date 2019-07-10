@@ -1,0 +1,50 @@
+
+<script>
+/**
+ * @param {string} s
+ * @return {number}
+ * 思路：用新对象把出现的字母以及出现次数重新记载，最后返回只被记录一次的值的在原来位置的下坐标
+ */
+ var firstUniqChar = function(s) {
+    var map = {}
+    for(var i = 0 ; i < s.length ; i++){
+      if(s[i] in map == false){
+        map[s[i]] = 1
+      }else{
+        map[s[i]]++
+      }
+    }
+    for(var j = 0 ; j < s.length ; j++){
+      if(map[s[j]] == 1){
+        return j
+      }
+    }
+    return -1
+  };
+</script>
+
+
+<script>
+
+  var firstUniqChar = function(s) {
+    var countMap = {}
+    
+    for (var i = 0; i < s.length; i++) {
+        var char = s[i]
+        if (char in countMap) {
+            countMap[char]++
+        } else {
+            countMap[char] = 1
+        }
+    }
+    
+    for (var i = 0; i < s.length; i++) {
+        var char = s[i]
+        if (countMap[char] == 1) {
+            return i
+        }
+    }
+    
+    return -1
+  };
+</script>

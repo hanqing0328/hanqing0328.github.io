@@ -1,0 +1,22 @@
+<script>
+/**
+ * @param {number} x
+ * @return {number}
+ */
+ var reverse = function(x) {
+    var n = x > 0 ? x : -x
+    var result = 0
+    if(n == 0){
+      return 0
+    }
+    while(n > 0){
+      var digit = n % 10
+      result = result * 10 + digit
+      n = (n - digit) / 10
+    }
+    if(result > 2147483647){
+      return 0
+    }
+    return x > 0? result : -result
+  };
+</script>

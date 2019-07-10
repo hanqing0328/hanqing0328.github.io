@@ -1,0 +1,42 @@
+<script>
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode[]} lists
+ * @return {ListNode}
+ */
+ var mergeKLists = function(lists) {
+  function listToAray(list){
+  var ary = []
+  while(list !== null){    
+    ary.push(list.val)
+    list = list.next
+  }
+  return ary
+}
+  
+  function arryToLIst(ary,start = 0){
+  if(ary.length == start){
+    return null
+  }
+  return {val:ary[start],next:arryToLIst(ary,++start),}
+ }
+  
+  var newlists = []
+  for(var i = 0 ; i < lists.length ; i++){
+    newlists.push(listToAray(lists[i]))
+  }
+  newlists = newlists.sort(function(a,b){
+    return a - b
+  })
+
+  var result = arryToLIst(newlists)
+  return result
+  };
+  
+</script>

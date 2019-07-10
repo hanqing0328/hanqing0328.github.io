@@ -1,0 +1,20 @@
+<script>
+var isPalindrome = function(x) {   
+ if(x < 0){
+    return false
+   }
+   var m = x
+   var newnumber = 0
+    while(x > 0){
+      var digit = x % 10
+      newnumber = newnumber * 10 + digit
+      x = (x - digit) / 10
+    }
+    if(newnumber == m){
+      console.log(true)
+      return true
+    }else{
+      return false
+    }
+  };
+</script>

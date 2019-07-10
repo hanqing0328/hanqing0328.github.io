@@ -1,0 +1,30 @@
+<script>
+/**
+ * @param {number} left
+ * @param {number} right
+ * @return {number[]}
+ */
+ var selfDividingNumbers = function(left, right) {
+   var result = []
+   for(var i = left ; i <= right ; i++){
+    if(isSelfDividing(i)){
+      result.push(i)
+    }
+   }
+   return result
+    function isSelfDividing(n){
+      var m = n
+      if(n == 0){
+        return false
+      }
+      while(n > 0){
+        var digit = n % 10
+        if(m % digit !== 0){
+          return false
+        }
+        n = (n - digit) / 10
+      }
+      return true
+    }
+  };
+</script>

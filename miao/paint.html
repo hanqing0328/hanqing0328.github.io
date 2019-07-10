@@ -42,16 +42,33 @@
 </script>
 <script>
   // YOUR CODE GOES BELOW
+  //实线
   for(var i = 0 ; i < 500 ; i++){
     x = i
     y = 100
     dot(x,y)
   }
+  //虚线
   for(var i = 0 ; i < 500 ; i += 2){
     x = i
     y = 120
     dot(x,y)
   }
+  //两个实点两个空点的虚线
+  //答案：
+  for(var i = 0 ; i < 500 ; i ++){
+   if(x % 4 < 2)
+    dot(x,140)
+  }
+  
+//画一条三个实点两个空点的虚线
+for(var i = 0 ; i < 500 ; i ++){
+   if(x % 5 < 3)
+    dot(x,160)
+  }
+
+
+  //下面方法不对
   for(var i = 0 ; i < 500 ; i += 4){
     x = i 
     y = 140
@@ -77,11 +94,13 @@
      y = 160
      dot(x,y)
    }
+   //45度斜线
    for( var j = 0 ; j < 500 ; j ++){
      x = j 
      y = x
      dot(x,y)
    }
+   //对角线
    for( var j = 0 ; j < 500 ; j ++){
      x = j 
      y = x * ( 3 / 4)
@@ -119,7 +138,9 @@
      for( var row = 150 ; row < 300 ; row++ ){
       var x = line
       var y = row    
-       dot(x,y,color = "rgb(" + (255 - 255 /150 * x) + "," + (405 - 255 /150 * y) + "," + 255 + ")")
+      var r = (line - 0) * 256 / 150
+      var g = (row - 0) * 256 / 150
+       dot(x,y,color = "rgb(" + r + "," + g + "," + 255 + ")")
      }
    }
 
@@ -130,8 +151,32 @@
     var y1 = (150 + 50 * Math.sin(degree * 3.14 / 180)) 
     dot(x1,y1,color = "aqua")
    }
+ 
+  function circle(r){
+  for(var d = 0 ; d <= 2 * Math.PI ; d += 1){
+    var x = Math.sin(d) * r
+    var y = Math.cos(d) * r
+    dot(x + 200 , y + 150)
+  }
+  }
+
   
   //画实心圆
+//答案：
+//从上往下，从左往右扫描
+//从正上到正下
+function solidCircle(cx,cy,r){
+  for(var y = -r ; y <= r ; y++){
+    var x1 = -Math.sqrt(r * r - y * y)| 0
+    var x2 = -x1
+    for(var x = x1 ; x <= x2 ; x++){
+      dot(x + cx , y + cy)
+    }
+}
+}
+
+
+  //以下错误
   for(var r = 0 ; r < 50 ; r++){
     for(var degree = 1 ; degree <= 360 ; degree ++){
     var x1 =(200 + r * Math.cos(degree * 3.14 / 180))

@@ -1,0 +1,53 @@
+<script type = "one">
+  /**
+   * @param {number} n
+   * @return {boolean}
+   */
+  var isPowerOfFour = function(n) {
+      if(n == 1){
+        console.log("true")
+        return true
+      }
+      
+      while (n >= 4){
+        if(n % 4 !== 0){
+          console.log("false")
+          return false
+        }
+        n = n / 4
+       if(n == 1){
+        console.log("true")
+         return true
+       }
+      }
+      if(n < 4){
+        console.log("false")
+        return false
+      }
+  };
+  isPowerOfThree(16)
+</script>
+
+<script type="two">
+ /**
+   *思路：4^n = 2^2n = 100000000 后面总是有偶是个零
+   * 第一步先确认转换成二进制以后后面是不是全是零(跟验证2的n次方的方法一样与n-1做与运算是否为0),比如5->101就算跟1010..与运算也是0
+   * 第二步 并且有偶数个零
+   * 二进制数是不是包含偶数个零验证方法：与1010101010... 32位（magic number）做与运算结果是否为0
+   * 10101010
+    & 1000000
+      0000000
+   * 从右往左每次取4位转换成16进制变成8个a
+   *表达式：n & 0xaaaaaaaa == 0
+   *必定是偶数个0，所以1在的位置倒数第三个，倒数第5个。。。正数第2个， 所以把101010.。的前面2个数10抹掉，后面的10用2表示 即
+   * n & 0x2aaaaaaa == 0
+   * 注意：按位与一定加好括号
+   */
+   var isPowerOfFour = function(n) {
+     if(n < 1){
+       return false
+     }
+     return (((n & (n-1)) == 0) && ((n & 0xaaaaaaaa) == 0))
+   }  
+
+</script>

@@ -1,0 +1,161 @@
+<script type="one">
+/**
+ * @param {number} n
+ * @return {number}
+ * Count the number of prime numbers less than a non-negative number, n.
+ */
+ var countPrimes = function(n) {
+    var count = 0
+    for (var i = 2; i < n; i++) {
+        if (isPrime(i)) {
+            count++
+        }
+    }
+      return count
+};
+var isPrime = function(n) {
+    if (n < 2) {
+        return false
+    }
+    var sqr = Math.sqrt(n)
+    for (var i = 2; i <= sqr; i++) {
+        if (n % i == 0) {
+            return false
+        }
+    }
+    return true
+};
+</script>
+
+<script>
+  /**
+*制作primeList ，不用每次都从2开始++，而只要把primelist里的质数除一下就能知道是不是质数
+*/
+ var primeList = []
+ var countPrimes = function(n) {
+    var count = 0
+    for (var i = 2; i < n; i++) {
+        if (isPrime(i)) {
+            count++
+        }
+    }
+      return count
+};
+var isPrime = function(n) {
+    if (n < 2) {
+        return false
+    }
+    var sqr = Math.sqrt(n)
+    for (var i = 0; primeList[i] <= sqr; i++) {
+        if (n % primeList[i] == 0) {
+            return false
+        }
+    }
+    
+    primeList.push(n)
+    return true
+};
+
+</script>
+
+<script>
+/**
+*primeList 在每次调用之前清空
+*/
+var countPrimes = function(n) {
+    var primeList = []
+    var count = 0
+    for (var i = 2; i < n; i++) {
+        if (isPrime(i)) {
+            count++
+        }
+    }
+      return count
+
+    function  isPrime (n) {
+    if (n < 2) {
+        return false
+    }
+    var sqr = Math.sqrt(n)
+    for (var i = 0; primeList[i] <= sqr; i++) {
+        if (n % primeList[i] == 0) {
+            return false
+        }
+    }
+   
+    primeList.push(n)
+    return true
+};
+
+};
+</script>
+
+<script>
+/**
+*primeList 在遇到比自己更大的数才增加一次
+*/
+var primeList = [2]
+var countPrimes = function(n) {
+    var count = 0
+    for (var i = 2; i < n; i++) {
+        if (isPrime(i)) {
+            count++
+        }
+    }
+      return count
+};
+function  isPrime (n) {
+if (n < 2) {
+    return false
+}
+var sqr = Math.sqrt(n)
+for (var i = 0; primeList[i] <= sqr; i++) {
+    if (n % primeList[i] == 0) {
+        return false
+    }
+}
+if(n > primeList[primeList.length - 1])
+primeList.push(n)
+return true
+};
+</script>
+
+<script>
+/**
+*“埃拉托斯特尼筛”:1不是质数，也不是合数，要划去。第二个数2是质数留下来，而把2后面所有能被2整除的数都划去。2后面第一个没划去的数是3，把*3留下，再把3后面所有能被3整除的数都划去。3后面第一个没划去的数是5，把5留下，再把5后面所有能被5整除的数都划去。这样一直做下去
+*先制作一个全部都是1的长度为n的数组，后面按顺序把不是质数的划掉变成0
+*sqrt(n)之前的数的倍数已经能够把所有和数划掉了，所以划的因子数到sqrt（n）即可
+* 每个数能最快划掉的是自己的平方；比如3划掉自己的倍数的时候第一个是9，因为之前的6已经被2划掉了，所以划相应倍数的时候从平方开始
+* 奇数的话，划数的周期为自己的2倍。 比如 3 下面是 9 再下面是 15 .。。 周期是6 ；所以划掉的周期质素可写自己的2倍
+*全部划完之后记1有几个
+*/
+var countPrimes = function(n){
+  if (n < 2) {
+    return 0
+}
+  var flags  = []
+  for(var i = 0 ; i < n ; i++){
+    flags[i] = 1
+  }
+  var sqrt = Math.floor(Math.sqrt(n))
+  for(var j = 2 ; j <= sqrt ; j++){
+    // if(j % 2 !== 0){
+    //   var step = k * 2
+    // }else{
+    //   step = k
+    // }
+    var step = j % 2? k * 2 : k
+    for(var k = j * j ; k < n ; k += step){
+      flags[k] = 0
+    }
+  }
+  var count = 0
+  for(var c = 2 ; c < n ; c++){
+    //flags[c] == 1
+    //count++
+    count += flags[c]
+  }
+  return count
+}
+
+</script>

@@ -1,0 +1,22 @@
+
+<script>
+/**
+ * @param {number[]} candies
+ * @return {number}
+ */
+ var distributeCandies = function(candies) {
+  var l = candies.length
+  var ml = l / 2
+  var left = 0
+  var right = 1
+  var count = l
+  while(right < l){
+    if(candies[left] - candies[right] == 0){
+      count--
+    }
+    left++
+    right++
+  }
+  return count > ml ? ml :count
+  };
+</script>

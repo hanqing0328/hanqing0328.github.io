@@ -1,0 +1,197 @@
+01 -1 https://leetcode.com/problems/perfect-number/  
+   
+02 -1 https://leetcode.com/problems/ugly-number/     
+   
+03 -1 https://leetcode.com/problems/sqrtx/           
+   
+04 -1 https://leetcode.com/problems/valid-perfect-square/   
+   
+05 -1 https://leetcode.com/problems/happy-number/
+   
+06 -1 https://leetcode.com/problems/powx-n/
+   
+07 -1 https://leetcode.com/problems/power-of-three/
+   
+08 -1 https://leetcode.com/problems/power-of-four/
+   
+09 -1 https://leetcode.com/problems/power-of-two/
+   
+10 -1 https://leetcode.com/problems/palindrome-number/
+   
+11 -1 https://leetcode.com/problems/hamming-distance/
+   
+12 -1 https://leetcode.com/problems/self-dividing-numbers/
+   
+13 -1 https://leetcode.com/problems/base-7/
+   
+14 -1 https://leetcode.com/problems/add-digits/
+   
+15 -1 https://leetcode.com/problems/reverse-integer/
+   
+16 -1 https://leetcode.com/problems/binary-gap/description/
+   
+17 -1 https://leetcode.com/problems/reverse-bits/description/
+   
+18 -1 https://leetcode.com/problems/sum-of-square-numbers/description/   
+   
+19 -1 https://leetcode.com/problems/number-of-1-bits/description/
+   
+20 1- https://leetcode.com/problems/move-zeroes/
+   
+21 1- https://leetcode.com/problems/missing-number/
+   
+22 1- https://leetcode.com/problems/plus-one/
+   
+23 1- https://leetcode.com/problems/max-consecutive-ones/
+   
+24 1- https://leetcode.com/problems/fizz-buzz/
+   
+25 1- https://leetcode.com/problems/remove-element/
+   
+26 1- https://leetcode.com/problems/search-insert-position/
+   
+27 1- https://leetcode.com/problems/merge-sorted-array/
+   
+28 1- https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+   
+29 1- https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+   
+30 1- https://leetcode.com/problems/counting-bits/
+   
+31 1- https://leetcode.com/problems/multiply-strings/description/
+   
+32 1- https://leetcode.com/problems/add-strings/description/
+   
+33 1- https://leetcode.com/problems/add-binary/description/
+   
+34 1- https://leetcode.com/problems/add-to-array-form-of-integer/description/
+   
+35 1- https://leetcode.com/problems/maximum-subarray/
+   
+36 1- https://leetcode.com/problems/minimum-moves-to-equal-array-elements/
+   
+37 1- https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/
+   
+38 1- https://leetcode.com/problems/longest-common-prefix/
+   
+39 https://leetcode.com/problems/excel-sheet-column-number/
+   
+40 https://leetcode.com/problems/excel-sheet-column-title/
+   
+41 https://leetcode.com/problems/climbing-stairs/description/
+   
+42 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+   
+43 https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+   
+44 https://leetcode.com/problems/integer-to-roman/
+   
+45 https://leetcode.com/problems/roman-to-integer/
+   
+46 1- https://leetcode.com/problems/distribute-candies/   speeddown
+   
+47 https://leetcode.com/problems/binary-search/description/
+   
+48 1- https://leetcode.com/problems/valid-parentheses/
+   
+49 1- https://leetcode.com/problems/count-primes/
+   
+50 1- https://leetcode.com/problems/single-number/
+
+51 https://leetcode.com/problems/utf-8-validation/description/    실패
+  
+52 https://leetcode.com/problems/squares-of-a-sorted-array/ 
+
+53 https://leetcode.com/problems/add-to-array-form-of-integer/description/
+
+54 1- https://leetcode.com/problems/first-unique-character-in-a-string/description/  --
+
+55 1- https://leetcode.com/problems/two-sum/description/
+
+56 1- https://leetcode.com/problems/group-anagrams
+
+57 1- https://leetcode.com/problems/single-number  --- 用异或做的，映射还没做
+
+58 1- https://leetcode.com/problems/happy-number   用映射记录出现过的数
+
+59 1- https://leetcode.com/problems/keyboard-row
+
+60 https://leetcode.com/problems/distribute-candies  去重过程需要用映射
+
+61 1- https://leetcode.com/problems/find-common-characters/description/
+
+62 1- https://leetcode.com/problems/valid-sudoku
+
+63 https://leetcode.com/problems/isomorphic-strings
+
+64 1- https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+65 1- https://leetcode.com/problems/triangle/description/ 用递归再做一遍
+
+66 1- https://leetcode.com/problems/unique-paths/
+
+67 1- https://leetcode.com/problems/add-two-numbers/    链表开始
+
+68 1- https://leetcode.com/problems/remove-nth-node-from-end-of-list
+
+69 1- https://leetcode.com/problems/merge-two-sorted-lists  循环的方法还没做
+
+70 1- https://leetcode.com/problems/merge-k-sorted-lists
+
+71 1- https://leetcode.com/problems/swap-nodes-in-pairs      循环的方法还没做
+
+72 https://leetcode.com/problems/reverse-nodes-in-k-group
+
+73 1- https://leetcode.com/problems/rotate-list
+
+74 1- https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii
+
+75 1- https://leetcode.com/problems/remove-duplicates-from-sorted-list
+
+76 1- https://leetcode.com/problems/partition-list
+
+77 1- https://leetcode.com/problems/reverse-linked-list-ii
+
+78 https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree
+
+79 https://leetcode.com/problems/copy-list-with-random-pointer
+
+80 1- https://leetcode.com/problems/linked-list-cycle
+
+81 https://leetcode.com/problems/linked-list-cycle-ii
+
+82 https://leetcode.com/problems/reorder-list
+
+83 https://leetcode.com/problems/insertion-sort-list
+
+84 1- https://leetcode.com/problems/sort-list
+ 
+85 https://leetcode.com/problems/intersection-of-two-linked-lists
+
+86 1- https://leetcode.com/problems/remove-linked-list-elements
+
+87 1- https://leetcode.com/problems/reverse-linked-list
+
+88 https://leetcode.com/problems/palindrome-linked-list
+
+89 1- https://leetcode.com/problems/delete-node-in-a-linked-list
+
+90 https://leetcode.com/problems/odd-even-linked-list
+
+91 https://leetcode.com/problems/add-two-numbers-ii
+
+92 https://leetcode.com/problems/split-linked-list-in-parts
+
+93 1- https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list
+
+94 https://leetcode.com/problems/linked-list-components
+
+95 https://leetcode.com/problems/design-linked-list
+
+96 https://leetcode.com/problems/middle-of-the-linked-list
+
+97 https://leetcode.com/problems/next-greater-node-in-linked-list
+
+98
+
+99

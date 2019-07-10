@@ -1,0 +1,39 @@
+<script>
+    /**
+     * @param {number[]} nums
+     * @return {number}
+     *Given a non-empty array of integers, every element appears twice except *for one. Find that single one.
+     * Input: [2,2,1]  Output: 1
+     * 方法1：遍历nums，用空的数组存nums里之前没出现过的值，之前出现过的就删掉。最后只剩下只出现过一次的数字
+     */
+    var singleNumber = function(nums) {
+        var arr = []
+        for(var i = 0;i < nums.length ; i++){
+          var num = nums[i]
+          var idx = arr.indexOf(num)
+          if( idx != -1){
+            arr.splice(idx,1)
+          }else{
+          arr.push(num)
+          }  
+        }
+        return arr
+    };
+
+</script>
+
+<script>
+/**
+     *方法2：按位异或
+     * 规律一：交换律：a ^ b^ c^ a^b = a^a^b^b^c
+     * 规律二：自己跟自己异或 0
+     * 规律三：跟0异或等于自身
+     */
+     var singleNumber = function(nums) {
+       var result =[0]
+       for(var i = 1 ; i < nums.length ; i++){
+        result ^= nums[i] 
+       }
+       return result
+     }
+</script>

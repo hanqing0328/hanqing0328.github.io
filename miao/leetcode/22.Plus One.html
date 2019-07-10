@@ -1,0 +1,26 @@
+<script>
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ *逻辑要清晰：最后一位加1，加一次即可。 加完之后遍历每位，如果大于9就变成0，前面的数加1。 直到遇到不是大于9的数就直接返回。 考虑边界情况：最前面是10就得，把数变成0，前面加1。
+ */
+ var plusOne = function(digits) {
+    var length = digits.length - 1
+    digits[length]++
+
+    for (var i = length; i > 0; i--) {
+        if (digits[i] > 9) {
+            digits[i] = 0
+            digits[i - 1]++
+        } else {
+            return digits
+        }
+    }
+    if (digits[0] > 9) {
+        digits[0] = 0
+        digits.unshift(1)
+    }
+    return digits      //放在外面的理由：个位数的话进不去for循环，也进不去if语句 被返回undefi
+}
+
+</script>

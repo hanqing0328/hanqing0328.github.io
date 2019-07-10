@@ -1,0 +1,43 @@
+<script>
+  /**
+   * @param {number[]} numbers
+   * @param {number} target
+   * @return {number[]}
+   *Input: numbers = [2,7,11,15], target = 9   Output: [1,2] 
+   * Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
+   * 时间限制过不去
+   */
+  var twoSum = function(numbers, target) {
+      var l = numbers.length
+      for(var i = 0 ; i < l ; i++){
+        for(var j = i + 1 ; j < l ; j ++){
+          if(numbers[i] + numbers[j] == target){
+            return (i + 1,j + 1)
+          }
+        }
+      }
+  };
+
+</script>
+
+<script>
+/* 
+方法2： 双指针： 一个指针从头开始指，第二个指针从尾开始。 两个值相加，如果小了就把第一个指针往右移，如果大了第二个指针往左移，。
+
+ */
+
+ var twoSum = function(numbers, target) {
+    var smallPointer = 0
+    var bigPointer = numbers.length - 1
+  while(true){
+    if(numbers[smallPointer] + numbers[bigPointer] > target){
+      bigPointer--
+    }else if(numbers[smallPointer] + numbers[bigPointer] < target){
+      smallPointer ++
+    }else{
+      return ([smallPointer +1 ,bigPointer +1])
+    }
+  }
+
+ }
+</script>

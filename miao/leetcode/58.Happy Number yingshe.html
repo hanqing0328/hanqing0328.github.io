@@ -1,0 +1,22 @@
+
+<script>
+
+var isHappy = function(n ,map = []) {  
+  var sum = 0
+  while(n > 0){
+    var digit = n % 10
+    sum += digit * digit
+    n = (n - digit) / 10
+  }
+  if(sum == 1){
+    return true
+  }else{
+    if(map.indexOf(sum) == -1){
+      map.push(sum)
+      return isHappy(sum,map)
+    }else if(map.indexOf(sum) !== -1){
+      return false
+    }
+  }
+}
+</script>

@@ -1,0 +1,78 @@
+<script>
+  /**
+   * @param {number[]} nums1
+   * @param {number} m
+   * @param {number[]} nums2
+   * @param {number} n
+   * @return {void} Do not return anything, modify nums1 in-place instead.
+   Input:nums1 = [1,2,3,0,0,0], m = 3     nums2 = [2,5,6],       n = 3
+   Output: [1,2,2,3,5,6]
+   *思路：两组数组都是从小到大排序的，按顺序合并，需要从大比较小，把更大的先挑出来逐步放在最后面。
+   *边界条件：两组数组其中任何一组先到达尽头，把剩下的数组全部按顺序填充剩下的位置即可
+   /*下面注释部分是做错的
+   */
+//  var merge = function(nums1, m, nums2, n) {
+//       var onePot = (m == 0)? m: m - 1
+//       var twoPot = n - 1
+//       var newpot = m + n -1
+//       while (newpot >= 0) {
+//         if(nums1[onePot] >= nums2[twoPot]){
+//           nums1[newpot] = nums1[onePot--]
+         
+//         }else if(nums1[onePot] < nums2[twoPot]){
+//           nums1[newpot] = nums2[twoPot--]
+          
+//         }
+     
+//          if(twoPot >= 0 & onePot == -1){
+//                nums1[newpot] = nums2[twoPot]
+//                twoPot--
+              
+//           }
+//              newpot--
+//       }
+//       return nums1
+//   };
+
+function merge(nums1, m, nums2, n) {
+    var i = m - 1
+    var j = n - 1
+    var k = m + n - 1
+    while (i >= 0 && j >= 0) {
+        if (nums1[i] < nums2[j]) {
+            nums1[k--] = nums2[j--]
+        } else {
+            nums1[k--] = nums1[i--]
+        }
+    }
+    while (i >= 0) {
+        nums1[k--] = nums1[i--]
+    }
+    while (j >= 0) {
+        nums1[k--] = nums2[j--]
+    }
+}
+
+</script>
+
+<script>
+var merge = function(nums1, m, nums2, n) {
+  var i = m -1
+  var j = n - 1
+  var k = (m + n) - 1
+  while(i >= 0 && j >= 0){
+  if(nums1[i] >= nums2[j]){
+    nums1[k--] = nums1[i--]
+  }else{
+    nums1[k--] = nums2[j--]
+  }
+  }
+  while(i < 0 && j >= 0){
+    nums1[k--] = nums2[j--]
+  }
+  while( j < 0 && i >= 0){
+    nums1[k--] = nums1[i--]
+  }
+
+}
+</script>

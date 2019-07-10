@@ -1,0 +1,56 @@
+<script>
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+
+ /**
+ *方法1：递归
+ */
+ var reverseList = function(head) {
+   if(!head || !head.next){
+     return head
+   }
+    var left = head
+    var right = head.next
+    var newleft = reverseList(right)
+    right.next = left
+    left.next = null
+    return newleft
+  };
+</script>
+
+
+<script>
+/* 
+方法2：循环
+从头到尾一个个把指针旋转
+ */
+ var reverseList = function(head){
+   if(!head || !head.next){
+     return head
+   }
+   var prehead = null
+   while(head){
+     var nexts = head.next
+     head.next = prehead
+     prehead = head
+
+
+     head = nexts
+     if(head.next == null){
+       head.next = prehead
+       return head
+     }
+     nexts = head.next    
+   }
+   
+ }
+</script>

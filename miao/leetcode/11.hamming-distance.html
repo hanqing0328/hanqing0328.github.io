@@ -1,0 +1,74 @@
+<script type="one">
+/**
+ * @param {number} x
+ * @param {number} y
+ * @return {number}
+ * 转为二进制后比较，不同的时候count++
+ * 循环条件：x,y两个数全部要循环到0,也就是两个数都变成0就结束循环：
+ * 表达式：while(x !== 0 || y !==0)
+ */
+ var hammingDistance = function(x, y) {
+  var count = 0
+    while (x !== 0 || y !== 0) {
+        var a = (x % 2 == 0) ? 0 : 1
+        var b = (y % 2 == 0) ? 0 : 1
+        if (a !== b) {
+            count++
+        }
+        x = x >> 1
+        y = y >> 1
+    }
+    return count
+};
+
+hammingDistance(1, 4)
+</script>
+
+<script type="two" >
+/**
+*思路：两个数字转成2进制之后把所有不同的部分标明出来的方法
+* 通过 异或运算： 
+*如； 101001
+*   ^ 100110
+*     001111 --> 不同的部分全部变成1,相同的部分全部变成0
+* 再把这个数从最右位开始循环遇到1就count++.把z转换成2进制的过程
+*/
+var hammingDistance = function(x, y){
+  var  z = (x ^ y)
+  var count = 0
+  while(z > 0){
+    if(z % 2 == 1){
+      count ++
+    }
+    z = (z >> 1)
+  }
+  return count
+}
+</script>
+
+<script>
+/**
+* 把第二个方法更加优化的方法：
+* z里面的1专门挑出来
+* 任何数n与自己n-1 做按位与运算 倒数第一个1就会变成0
+*  1010000
+* &1001111
+*  1000000
+*把z的所有1去掉的次数累加起来就可以
+*/
+var hammingDistance = function(x, y){
+  var  z = (x ^ y)
+  var count = 0
+  // while(z > 0){
+  //   if(z % 2 == 1){
+  //     count ++
+  //   }
+  //   z = (z >> 1)
+  // }
+  while(z != 0){
+    z = z & (z-1)
+    count ++
+  }
+  return count
+}
+</script>

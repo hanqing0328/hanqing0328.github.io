@@ -1,0 +1,46 @@
+<script>
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var minMoves2 = function(nums) {
+    var arr = nums.sort(function(a ,b){
+        return a - b
+    })
+    var l = nums.length
+    var ml = Math.floor(l / 2)
+    var mid = nums[ml]
+    var sumL = 0
+    var sumR = 0
+    for(var i = 0 ; i < ml  ; i++){
+      sumL += nums[i]
+    }
+    for(var j = ml + 1 ; j < l ; j++ ){
+      sumR += nums[j]
+    }
+    return nums[ml] * ml - sumL + sumR - (l - ml -1 ) * nums[ml]
+  };
+
+</script>
+
+<script>
+  
+    // 方法2：最前面的数和最后面的数相减= 他俩到中间的总和
+    //  每一对的数相加
+    var minMoves2 = function(nums) {
+    var arr = nums.sort(function(a ,b){
+        return a - b
+    })
+    var right = nums.length - 1
+    var sum = 0
+    var left = 0
+    while(right - left >= 0){
+      sum += (nums[right] - nums[left])
+      left++
+      right--
+    }
+    return sum
+  };
+  
+
+</script>

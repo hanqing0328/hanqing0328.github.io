@@ -1,0 +1,51 @@
+<script>
+var addToArrayForm = function(a, b) {
+  function StringToArray(s){
+    var newArry = s.split('')
+    for(var i = 0 ; i < newArry.length ; i++ ){
+      newArry[i] = Number(newArry[i])
+    }
+    return newArry
+  }
+  var carry = 0
+
+  var i = a.length - 1
+  var j = String(b).length - 1
+  var k = i >= j ? i : j
+  b = StringToArray(String(b))
+  var result = []
+  while( i >= 0 && j >= 0){
+    if((a[i] + b[j] + carry) < 10){
+      result[k--] = a[i] + b[j] + carry
+      carry = 0
+    }else if((a[i] + b[j] + carry ) >= 10 ){
+      result[k--] = a[i] + b[j] + carry - 10
+      carry = 1
+    }
+    i--
+    j--
+    if(j < 0 && i < 0 && carry > 0){
+      result.unshift(1)
+    }
+    }
+    var f = i >= 0 ? i : j
+    var e = i >= 0 ? a : b
+    while (f >= 0 ) {
+      if(e[f] + carry < 10){
+        result[k--] = e[f] + carry
+        carry = 0
+      }else if(e[f] + carry >= 10){
+        result[k--] = e[f] + carry - 10
+        carry = 1
+      }
+      f--   
+      if(f < 0 & carry == 1){
+         result.unshift(1)
+
+      }
+    }
+
+    return result
+  }; 
+  
+</script>

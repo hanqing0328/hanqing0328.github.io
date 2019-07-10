@@ -1,0 +1,27 @@
+<script>
+/**
+ * @param {number} m
+ * @param {number} n
+ * @return {number}
+ */
+ 
+ var uniquePaths = function(m, n ,cache = {}) {
+    if(m == 1 || n == 1){
+      return 1
+    }
+    if(m < 1){
+      return n
+    }
+    if(n < 1){
+      return m
+    }
+    var key = m + "," + n
+    if(key in cache){
+      return cache[key]
+    }else{
+     cache[key] = uniquePaths(m,n-1,cache) + uniquePaths(m-1,n,cache)
+    }
+
+    return cache[key] 
+  };
+</script>

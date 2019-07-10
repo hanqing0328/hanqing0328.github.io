@@ -1,0 +1,33 @@
+<script>
+/**
+ * @param {string} s
+ * @return {number}
+ *思路：两个指针从头开始，一个指针从左到右遍历，如果遍历到之前出现过的值，就把左边的指针移动到之前重复值的位置上，右边指针继续走
+ * 注意：每次缓存仓库里的值，一旦出现了重复值就把重复值之前的全部删除，不然对后面的比较有影响
+ */
+ var lengthOfLongestSubstring = function(s) {
+    var cache = []
+    var length = 0
+    var left = 0
+    var right = 0
+    var maxLength = 0
+    while(right < s.length){
+      if(cache.indexOf(s[right]) == -1){
+        cache.push(s[right])
+       
+        length = cache.length
+         right++
+        if(length > maxLength){
+        maxLength = length
+        }
+        
+      }else{
+        cache.splice(0,cache.indexOf(s[right]) + 1)  
+        cache.push(s[right])   
+        left = s.indexOf(s[right]) + 1
+        right++
+      }
+    }
+    return maxLength
+  };
+</script>

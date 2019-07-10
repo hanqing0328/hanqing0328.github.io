@@ -1,0 +1,48 @@
+<script>
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var maxSubArray = function(nums) {
+    var l = nums.length - 1
+    var sum = 0
+    var inMax = -Infinity
+    var outMax = -Infinity
+    for(var i = 0 ; i <=l ; i++){
+      for(var j = i ; j <= l ; j++){
+        sum += nums[j]
+        if(sum > inMax){
+          inMax =sum
+        }
+      }
+      if(inMax > outMax){
+        outMax = inMax
+      }
+        inMax = -Infinity
+        sum = 0
+    }
+    return outMax
+  };
+</script>
+
+
+<script>
+  /* 
+  捡钱，如果比之前的最大值还大就继续捡钱，把最大值存下来。 如果继续捡不是负数就先捡看看， 如果变成负数就扔掉目前为止的从0开始继续
+   */
+var maxSubArray = function(nums) {
+  var sum = 0
+  var preSum = -Infinity
+  for(var i = 0 ; i < nums.length ; i ++){
+    sum += nums[i]
+    if(sum >= preSum){
+      preSum = sum
+    }
+    if(sum < 0) {
+      sum = 0
+   
+    }
+  }
+  return preSum
+}
+</script>

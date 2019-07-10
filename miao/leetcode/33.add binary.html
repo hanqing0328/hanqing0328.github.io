@@ -1,0 +1,68 @@
+<script>
+/**
+ * @param {string} a
+ * @param {string} b
+ * @return {string}
+ * 两个二进制相加Input: a = "1010", b = "1011"   Output: "10101"
+ * 加法器
+ */
+ var addBinary = function(a, b) {
+    var carry = 0
+    var i = a.length - 1
+    var j = b.length - 1
+    var k = i >= j ? i : j
+    a = stringToArray(a)
+    b = stringToArray(b)
+    var result = []
+    while( i >= 0 && j >= 0){
+      if((a[i] + b[j] + carry) == 0){
+        result[k--] = 0
+        carry = 0
+      }else if((a[i] + b[j] + carry )== 1){
+        result[k--] = 1
+        carry = 0
+      }else if((a[i] + b[j] + carry )== 2){
+        result[k--] = 0
+        carry = 1
+      }else if((a[i] + b[j] + carry )== 3){
+        result[k--] = 1
+        carry = 1
+      }
+      i--
+      j--
+    }
+    var f = i >= 0 ? i : j
+    var e = i >= 0 ? a : b
+    while (f >= 0 ) {
+      if(e[f] + carry == 0){
+        result[k--] = 0
+        carry = 0
+      }else if(e[f] + carry == 1){
+        result[k--] = 1
+        carry = 0
+      }else if(e[f] + carry == 2){
+        result[k--] = 0
+        carry = 1
+      }  
+      f--   
+      if(f < 0 & carry == 1){
+         result.unshift(1)
+
+      }
+    }
+
+    if(j < 0 && i < 0 && carry > 0){
+      result.unshift(1)
+    }
+    result = result.join("")
+    return result
+
+    function stringToArray(s){
+      var newArry = s.split('')
+      for(var i = 0 ; i < newArry.length ; i++ ){
+        newArry[i] = Number(newArry[i])
+      }
+      return newArry
+    }
+  }
+</script>

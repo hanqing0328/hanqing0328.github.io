@@ -1,0 +1,25 @@
+
+<script>
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+ var groupAnagrams = function(strs) {
+    var map = {}
+    for(var i = 0 ; i < strs.length ; i++){
+      var classes = strs[i].split('').sort()
+      if(classes in map){
+        map[classes].push(strs[i])
+      }else{
+        map[classes] = [strs[i]]
+      }
+    }
+    var newmap = []
+      for(obj in map){
+    newmap.push((map[obj]))
+   }
+   return newmap
+
+  };
+  
+</script>
