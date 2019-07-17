@@ -178,7 +178,7 @@
 
 90 https://leetcode.com/problems/odd-even-linked-list
 
-91 https://leetcode.com/problems/add-two-numbers-ii
+91 1- https://leetcode.com/problems/add-two-numbers-ii
 
 92 https://leetcode.com/problems/split-linked-list-in-parts
 
@@ -192,6 +192,209 @@
 
 97 https://leetcode.com/problems/next-greater-node-in-linked-list
 
-98
+98 1- https://leetcode.com/problems/minimum-depth-of-binary-tree     二叉树开始
 
-99
+99 1- https://leetcode.com/problems/construct-string-from-binary-tree/description/
+
+100 1- https://leetcode.com/problems/same-tree
+
+101 1- https://leetcode.com/problems/maximum-depth-of-binary-tree
+
+102 1- https://leetcode.com/problems/path-sum/description/
+
+103 1- https://leetcode.com/problems/invert-binary-tree
+
+104 1- https://leetcode.com/problems/merge-two-binary-trees
+
+105 1- https://leetcode.com/problems/symmetric-tree
+
+106 1- https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal
+
+107 1- https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
+
+108 1- https://leetcode.com/problems/binary-tree-level-order-traversal
+
+109 1- https://leetcode.com/problems/maximum-depth-of-n-ary-tree
+
+110 1- https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal
+
+111 1- https://leetcode.com/problems/sum-of-left-leaves  方法需要整理
+
+112 https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
+
+113 1- https://leetcode.com/problems/binary-tree-preorder-traversal
+
+114 1- https://leetcode.com/problems/binary-tree-postorder-traversal
+
+115 1- https://leetcode.com/problems/binary-tree-inorder-traversal
+
+116 1- https://leetcode.com/problems/delete-node-in-a-bst
+
+117 1- https://leetcode.com/problems/insert-into-a-binary-search-tree
+
+118 1- https://leetcode.com/problems/sort-an-array/ 建议每种算法都交一遍
+
+119 1- https://leetcode.com/problems/kth-largest-element-in-an-array/description/
+
+120 1- https://leetcode.com/problems/majority-element/description/
+
+121 1- https://leetcode.com/problems/third-maximum-number/description/
+
+122
+
+123
+
+124
+
+125
+
+126
+
+127
+
+128
+
+129
+
+130
+
+131
+
+132
+
+133
+
+134
+
+135
+
+136
+
+137
+
+138
+
+139
+
+140
+
+141
+
+142
+
+143
+
+144
+
+145
+
+146
+
+147
+
+148
+
+149
+
+150
+
+151
+
+152
+
+153
+
+154
+
+155
+
+156
+
+157
+
+158
+
+159
+
+160
+
+161
+
+162
+
+163
+
+164
+
+165
+
+166
+
+167
+
+168
+
+169
+
+170
+
+171
+
+172
+
+173
+
+174
+
+175
+
+176
+
+177
+
+178
+
+179
+
+180
+
+181
+
+182
+
+183
+
+184
+
+185
+
+186
+
+187
+
+188
+
+189
+
+190
+
+191
+
+192
+
+193
+
+194
+
+195
+
+196
+
+197
+
+198
+
+199
+
+
+             

@@ -1,0 +1,21 @@
+var insertIntoBST = function(root, val) {
+    var head = root 
+    if(root.val <= val){
+        if(root.right){
+         insertIntoBST(root.right,val)
+        }else{
+          
+            var search = new TreeNode(val)
+            root.right = search 
+        }
+       
+    }else{
+        if(root.left){
+         insertIntoBST(root.left,val)
+        }else{
+            root.left = new TreeNode(val)
+        }
+       
+    }
+   return head
+};

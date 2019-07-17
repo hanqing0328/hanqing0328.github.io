@@ -1,0 +1,66 @@
+<script>
+var addTwoNumbers = function(l1, l2) {
+    var a = []
+    var b = []
+    while(l1){
+        a.push(l1.val)
+        l1 = l1.next
+    }
+      while(l2){
+        b.push(l2.val)
+        l2 = l2.next
+    }
+    var c = addToArrayForm(a,b)
+    return arryToLIst(c)
+};
+
+function arryToLIst(arry,start = 0){
+    if(arry.length == start){
+        return null
+    }
+    return ({val : arry[start], next : arryToLIst(arry,++start)})
+}
+
+
+var addToArrayForm = function(a, b) {
+
+  var carry = 0
+
+  var i = a.length - 1
+  var j = b.length - 1
+  var k = i >= j ? i : j
+  var result = []
+  while( i >= 0 && j >= 0){
+    if((a[i] + b[j] + carry) < 10){
+      result[k--] = a[i] + b[j] + carry
+      carry = 0
+    }else if((a[i] + b[j] + carry ) >= 10 ){
+      result[k--] = a[i] + b[j] + carry - 10
+      carry = 1
+    }
+    i--
+    j--
+    if(j < 0 && i < 0 && carry > 0){
+      result.unshift(1)
+    }
+    }
+    var f = i >= 0 ? i : j
+    var e = i >= 0 ? a : b
+    while (f >= 0 ) {
+      if(e[f] + carry < 10){
+        result[k--] = e[f] + carry
+        carry = 0
+      }else if(e[f] + carry >= 10){
+        result[k--] = e[f] + carry - 10
+        carry = 1
+      }
+      f--   
+      if(f < 0 & carry == 1){
+         result.unshift(1)
+
+      }
+    }
+
+    return result
+  };
+</script>

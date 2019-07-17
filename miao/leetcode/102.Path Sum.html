@@ -1,0 +1,22 @@
+var hasPathSum = function(root, sum) {
+  if(root && !root.right && !root.left){
+      if(sum == root.val){
+          return true
+      }else{
+          return false
+      }
+  }
+   if(root) {  
+     sum = sum - root.val
+    if(hasPathSum(root.left,sum) || hasPathSum(root.right,sum)){
+      return true
+    } else {
+      return false
+    }        
+      } 
+  
+
+  if(!root){
+      return false
+  }  
+};

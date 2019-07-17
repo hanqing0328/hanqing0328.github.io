@@ -1,0 +1,191 @@
+
+<script>
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+ /*
+ 方法1：冒泡排序：从最左边开始一个个逐步对比，把最大的放到该放的位置上。
+    冒泡排序可优化以下两点： 1）每次循环可逐步减少1次， 因为每次循环已经把最大的放到最边上了， 
+                            2）如果有一次一个都没被调换就说明已经排好了，没必要继续，可中间直接break  
+ */
+
+ function swap(ary,i,j){
+        if(i !== j){
+          var k = ary[i]
+          ary[i] = ary[j]
+          ary[j] = k
+        }
+      }
+
+ var sortArray = function(nums) {
+   for(var j = nums.length - 2 ; j >= 0 ; j--){
+     var swapped = false
+    for(var i = 0 ; i < nums.length ; i++){
+      if(nums[i] > nums[i+1]){
+        swap(nums,i,i + 1)
+        swapped = true
+      }    
+    }
+    if(swapped == false){
+      return nums
+    }
+   }
+   return nums
+  };
+</script>
+
+<script>
+/*
+方法2：
+归并排序 ：把数组每次一半一半对分，分到最小单位后收起来时，再进行有序组合，一层一层往回组合
+返回新数组
+*/
+var sortArray = function(nums){
+  if(nums.length < 2){
+    return nums.slice()
+  }
+  var length = nums.length 
+  var mid = length >> 1
+  var left = nums.slice(0,mid)
+  var right = nums.slice(mid)
+  left =  sortArray(left)  //===> 因为下面的函数返回新数组，这也得用变量接收
+  right =  sortArray(right)
+  return  merge(left,right)
+}
+
+
+
+function merge(left,right){
+  var result = []
+  var i = 0
+  var j = 0
+  while(i < left.length && j < right.length){
+    if(left[i] < right[j]){
+      result.push(left[i])
+      i++
+    }else{
+      result.push(right[j])
+      j++
+    }
+  }
+  while(i < left.length){
+    result.push(left[i++])
+  }
+  while(j < right.length){
+    result.push(right[j++])
+  }
+  return result
+}
+
+
+/*
+归并排序
+原数组返回
+*/
+var sortArray = function(nums){
+  if(nums.length < 2){
+    return nums
+  }
+  var length = nums.length 
+  var mid = length >> 1
+  var left = nums.slice(0,mid)
+  var right = nums.slice(mid)
+    sortArray(left)           //===> 因为下面的函数返回原数组，这不用变量接收
+    sortArray(right)
+ return  merge(left,right,nums)
+}
+
+
+
+function merge(left,right,ary){
+  var i = 0
+  var j = 0
+  var k = 0
+  while(i < left.length && j < right.length){
+    if(left[i] < right[j]){
+      ary[k++] = left[i++]
+    
+    }else{
+      ary[k++] = right[j++]
+    }
+  }
+  while(i < left.length){
+    ary[k++] = left[i++]
+  }
+  while(j < right.length){
+    ary[k++] = right[j++]
+  }
+  return ary
+}
+
+</script>
+
+
+<script>
+  /*
+  方法3：
+  排序二叉树：先用数组遍历组成排序二叉树，再用中序遍历二叉树，取出有序数组
+  */
+  function TreeNode(val) {
+       this.val = val;
+      this.left = this.right = null;
+}
+
+
+  function insertIntoBST(root, val){
+    if(!root){
+      return new TreeNode(val)
+    }
+    if(root.val > val){
+      root.left = insertIntoBST(root.left, val)
+    }else{
+      root.right = insertIntoBST(root.right, val)
+    }
+    return root
+  }
+
+  function inOrerTraverse(root,action){
+    if(root){
+    inOrerTraverse(root.left,action)   //注意传参
+    action(root.val)
+    inOrerTraverse(root.right,action)
+    }
+  }
+
+  var sortArray = function(nums){
+    var tree = nums.reduce(insertIntoBST,null)
+     var k = 0
+     inOrerTraverse(tree,(item)=>{
+      nums[k++] = item
+    })
+    return nums
+  }
+</script>
+
+<script>
+/*
+方法4：选择排序：从左往右，每次把最小的值按顺序位置交换摆放
+*/
+function swap(ary,i,j){
+        if(i !== j){
+          var k = ary[i]
+          ary[i] = ary[j]
+          ary[j] = k
+        }
+      }
+
+var sortArray = function(nums){
+  for(var i = 0 ; i < nums.length - 1 ; i++){
+    var minpos = i
+    for(var j = i + 1 ; j < nums.length ; j++ ){
+      if(nums[j] < nums[minpos]){
+        minpos = j
+      }
+    }
+    swap(nums,minpos,i)
+  }
+  return nums
+}
+
+</script>

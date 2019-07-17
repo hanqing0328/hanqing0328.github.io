@@ -1,0 +1,27 @@
+<script>
+  /*
+  思路：创建一个根节点，如果两个都有val就加两个值，存在新树上，剩下的，left和right重新递归
+  如果只有一个树有值，直接返回那颗树即可
+  */
+var mergeTrees = function(t1, t2) {
+    if(t1 && t2){
+        var root = new TreeNode()
+        root.val = t1.val + t2.val
+        root.left = mergeTrees(t1.left,t2.left)
+        root.right = mergeTrees(t1.right,t2.right)
+        return root
+    }
+    if(t1){
+      //return  new TreeNode(t1.val) // 错了，需要返回整个树，而不是只有值
+      return t1
+    }
+    if(t2){
+      //return  new TreeNode(t2.val)
+      return t2
+    }
+    if(!t1 && !t2){
+        return null
+    }
+
+};
+</script>

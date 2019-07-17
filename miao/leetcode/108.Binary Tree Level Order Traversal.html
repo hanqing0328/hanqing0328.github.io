@@ -1,0 +1,20 @@
+var levelOrder = function(root) { 
+  var result = []
+  function traver(root,depth){
+      if(!root){
+          return
+      }
+      if(result[depth] == undefined){
+         result[depth] = []
+      }
+      result[depth].push( root.val)
+      traver(root.left,depth + 1)
+      traver(root.right,depth + 1)
+  }
+  traver(root,0)
+  return result
+};
+二叉树从上到下按照层次遍历的方法： 把数组的每个位置当成层数。 
+     比如数组的第0位置放第一层的数，第1位置放第二层的数。
+     先传0位置，把第一个根值传进去， 之后先判断第1位置有没有数组，如果没有就在第1位置创建数组，
+     后面递归来的下一层的数放进去即可。 递归的时候记得把要加上去的层数也每次加进去

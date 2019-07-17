@@ -1,0 +1,24 @@
+<script>
+var buildTree = function(inorder, postorder) {
+    if(inorder.length == 1){
+       return new TreeNode(inorder[0])  //返回的不该是数，而是一个结点
+        
+    }
+    if(inorder.length == 0){
+        return null
+    }
+    if(inorder.length > 1){
+        var rootVal = postorder.pop()
+        var idx = inorder.indexOf(rootVal)
+        var inL = inorder.slice(0,idx)
+        var inR = inorder.slice(idx +1)
+        var pL = postorder.slice(0,inL.length)
+        var pR = postorder.slice(inL.length)
+        var root = new TreeNode(rootVal)
+        root.left = buildTree(inL,pL)
+        root.right = buildTree(inR,pR)
+        return root
+    }
+   
+};
+</script>

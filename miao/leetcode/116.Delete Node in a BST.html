@@ -1,0 +1,63 @@
+<script>
+  /*
+  思路：
+  1.root > key => root.left = 递归（root.left)
+  2.root < key => root.right = 递归(root.right)
+  3.root == key => 1)root的l/r全部没有 =》root = null
+                    2）只有l  =》 返回 root = l
+                    3） 只有r =》 返回 root = r
+                    4） 两个都在 ， 这里就选择左边的最大值
+                        找到左边的最大值后把root的val改成最大值
+                        之后直接把left = 递归（left， left的最大值）
+  */
+var deleteNode = function(root, key) {
+    
+    if(!root){
+        return null
+    }
+    if(root.val > key) {
+        root.left = deleteNode(root.left,key)
+    }
+    if(root.val < key) {
+        root.right = deleteNode(root.right,key)
+    }
+    if(root.val == key){
+        if(!root.left && !root.right){
+            root = null
+        }else
+        if(root.left && !root.right){
+            root = root.left
+        }else
+        if(root.right && !root.left){
+            root = root.right
+        }else
+        if(root.left && root.right){
+          var maxroot = findMaxNode(root.left) 
+          root.val = maxroot.val
+          root.left = deleteNode (root.left,maxroot.val)
+       
+        }
+        
+    }
+    return root
+}
+
+
+
+
+function findMaxNode(root){
+    while(root.right){
+       root = root.right  
+    }
+   return root
+    
+}
+
+function findMinNode(root){
+    while(root.left){
+       root = root.left  
+    }
+   return root
+    
+}
+</script>
