@@ -86,8 +86,8 @@ var hanqing0328 = function () {
    * @returns (Function): Returns the new negated function.
    * @Example var isOdd = negate(isEven)
    */
-   function negate(f){
-     return function(...args){
+   function negate(f) {
+     return function(...args){ 
        return !f(...args)
      }
    }
@@ -106,20 +106,137 @@ var hanqing0328 = function () {
     * // => ['d', 'c', 'b', 'a']
     */
 
-    function flip(f){
-      return function(...args){
+    function flip(f) {
+      return function(...args) {
         return f(...args.reverse())
       }
     }
 
-
-    function forOwn(obj, iterator){
+   /**
+    * 迭代对象的所有自有属性
+    * 用法： 
+    * forOwn({a:1,b:2}, (val, key, obj) => {
+    * 
+    * })
+    */
+    function forOwn(obj, iterator) {
       var hasOwn = Object.prototype.hasOwnProperty
       for(var key in obj){
-        if(hasOwn.call(obj, key)){
-          iterator(obj,key)
+        if(hasOwn.call(obj, key)) {
+          iterator(obj[key], key, obj)
         }
       }
+    }
+
+    /**
+     * 只调用n次的方法，超过n次以后返回第n次结果。不再调用方法
+     * 
+     */
+    function before(n, func) {
+      var times = 0
+      var lastreulst
+      return function(...args) {
+        times++   
+        if(times < n){
+          return lastreulst = func(...args)
+        }else{
+          return lastreulst
+        }
+      }
+    }
+
+    /**
+     * 调用n次以后才开始正常开始调用
+     */
+    function after(n, func) {
+      var times = 0
+      var lastreulst
+      return function(...args) {
+        times++   
+        if(times > n){
+          return lastreulst = func(...args)
+        }else{
+          return lastreulst
+        }
+      }
+    }
+
+
+    /**
+     * 创建一个函数，给原函数传n个参数
+     */
+
+    function ary(f, n = f.length) {
+      return function(...args) {
+        return f(...args.slice(0,n))
+      }
+    }
+   
+
+    /**
+     * 
+     * @param {*} arry 
+     * @param {*} size 
+     * 把数组按照size平均分配到另一个数组上，之后返回
+     * 平均分配之后剩下的部分照样打包返回
+     */
+    function chunk(ary, size = 1) {
+      var result = []
+      while(ary.length >= size) {
+        result.push(ary.splice(0, size))
+      }
+      if(ary.length > 0){
+        result.push(ary)
+      }
+      return result
+    }
+
+    /**
+     * 
+     * @param {*} ary 
+     * @param {*} values 
+     * 根据后面提供的数组，排除前面数组里的相同元素
+     * 返回剩下的元素
+     */
+    function difference(ary, values) {
+      for(var val of values) {
+        if(ary.indexOf(val) != -1) {
+          ary.splice(ary.indexOf(val) , 1)
+        }
+      }
+      return ary.slice()
+    }
+    
+    /**
+     * 
+     * @param {*} ary 
+     * @param {*} values 
+     * @param {*} iteratee 
+     */
+    function differenceBy(ary, values, iteratee) {
+      var result = []
+      for(var vals of ary) {
+        result.push(iteratee(vals))
+      }
+      for(var val of values) {
+        if(result.indexOf(iteratee(val)) != -1) {
+          result.splice(result.indexOf(val) , 1)
+          ary.splice(result.indexOf(val) , 1)
+        }
+      }
+      return ary    
+    }
+
+
+    function differenceWith(array, values, comparator){
+      for(var val of values) {
+        for(var a of array ) {
+          if(comparator(val, a)) {
+            array.splice(array.indexOf(a), 1)
+          }
+        }
+      }
+      return array
     }
 
   return {
@@ -128,6 +245,12 @@ var hanqing0328 = function () {
     some,
     negate,
     flip,
-
+    forOwn,
+    before,
+    after,
+    ary,
+    chunk,
+    difference,
+    differenceBy,
   }
 } ()
