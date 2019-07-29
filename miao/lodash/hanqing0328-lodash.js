@@ -243,6 +243,9 @@ var hanqing0328 = function () {
      */
     function dropRight(ary, n = 1 ) {
       var idx = ary.length - n 
+      if(idx < 0) {
+        idx = 0
+      }
       ary.splice(idx)
       return ary
     }
@@ -291,13 +294,12 @@ var hanqing0328 = function () {
      * @param {*} ary 
      * @param {*} depth 
      */
-    function flattenDepth(ary,depth = 1) {
-      var result = []
+    function flattenDepth(ary, depth = 1, result = []) {
       for(var i of ary) {
-        if(Array.isArray(i)) {
-          var flattendAry = flattenDepth(i, depth--)
+        if(Array.isArray(i) && depth > 0) {
+          var flattendAry = flattenDepth(i, depth - 1, result)
         } else {
-           result.push(...flattendAry)
+           result.push(i)
         }
       }
       return result
@@ -353,12 +355,12 @@ var hanqing0328 = function () {
 
     function join(ary, separator = ",") {
       return ary.slice(1).reduce((pre, cur, index = 1) => 
-      pre += separator + cur,String(ary[0]))
+      pre += separator + String(cur),String(ary[0]))
     }
     
 
     function last(ary) {
-      return ary.splice(ary.length - 1)
+      return ary(ary.length - 1)
     }
 
 
@@ -404,6 +406,14 @@ var hanqing0328 = function () {
       return result
     }
 
+    function sortedIndex(ary, val) {
+      for(var i = 0 ; i < ary.length ; i++) {
+        if(ary[i] > val) {
+          return i 
+        }
+      }
+    }
+
   return {
     compact,
     every,
@@ -435,5 +445,6 @@ var hanqing0328 = function () {
     pull,
     pullAll,
     reverse,
+    sortedIndex,
   }
 } ()
