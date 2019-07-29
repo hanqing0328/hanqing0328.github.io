@@ -198,13 +198,11 @@ var hanqing0328 = function () {
      * 根据后面提供的数组，排除前面数组里的相同元素
      * 返回剩下的元素
      */
-    function difference(ary, values) {
-      for(var val of values) {
-        if(ary.indexOf(val) != -1) {
-          ary.splice(ary.indexOf(val) , 1)
-        }
-      }
-      return ary.slice()
+    function difference(ary, ...value) {   //三个点接收的数组，后面value就变成多维数组
+       var values = []
+       values = values.concat(...value)   //最外层flatten数组
+       return ary.filter(item =>         //记得箭头函数单行不能有花括号
+        !values.includes(item))          //数组里包不包括某个值，用includes判断
     }
     
     /**
@@ -227,16 +225,183 @@ var hanqing0328 = function () {
       return ary    
     }
 
+    /**
+     * 从数组的左边开始删除n个数
+     * @param {*} ary 
+     * @param {*} n 
+     */
+    function drop(ary, n = 1) {
+      ary.splice(0,n)
+      return ary
+      //return ary.slice(n)
+    }
 
-    function differenceWith(array, values, comparator){
-      for(var val of values) {
-        for(var a of array ) {
-          if(comparator(val, a)) {
-            array.splice(array.indexOf(a), 1)
-          }
+    /**
+     * 从数组的右边开始删除n个数
+     * @param {*} ary 
+     * @param {*} n 
+     */
+    function dropRight(ary, n = 1 ) {
+      var idx = ary.length - n 
+      ary.splice(idx)
+      return ary
+    }
+
+
+    /**
+     * 往ary数组里从start位置到end位置替换成val元素
+     * @param {*} ary 
+     * @param {*} val 
+     * @param {*} start 
+     * @param {*} end 
+     */
+    function fill(ary, val, start = 0, end = ary.length) {
+      for(var i = 0 ; i < end - start ; i++) {
+        ary.splice(start + i, 1, val)
+      }
+      return ary
+    }
+
+    /**
+     * 多维数组只展平一层
+     * @param {*} ary 
+     */
+    function flatten(ary) {
+      return [].concat(...ary)
+    }
+
+    /**
+     * 多维数组完全展平
+     */
+    function flattenDeep(ary) {
+      var result = []
+      for(var i of ary) {
+        if(Array.isArray(i)) {   // 判断是不是数组的方法
+          var arys = flattenDeep(i)
+          result.push(...arys)
+        } else {
+          result.push(i)
         }
       }
-      return array
+      return result
+    }
+
+    /**
+     * 多维数组展平depth次
+     * @param {*} ary 
+     * @param {*} depth 
+     */
+    function flattenDepth(ary,depth = 1) {
+      var result = []
+      for(var i of ary) {
+        if(Array.isArray(i)) {
+          var flattendAry = flattenDepth(i, depth--)
+        } else {
+           result.push(...flattendAry)
+        }
+      }
+      return result
+
+      // return Array(depth).fill(0).reduce(ary => {
+      //   return flatten(ary)
+      // }, ary)
+    }
+   
+    /**
+     * 把数组里的数组重新放在对象里
+     * @param {*} ary 
+     * @example
+     * input：fromPairs([['a', 1], ['b', 2]]);
+     * output： => { 'a': 1, 'b': 2 }
+     */
+    function fromPairs(ary) {
+      var result = {}
+      ary.forEach(item => result[item[0]] = item[1])
+      return result
+    }
+    
+
+    function head(ary) {
+      return ary[0]
+    }
+
+    function indexOf(ary, val, fromIndex = 0) {
+      for(var i = fromIndex; i < ary.length ; i++) {
+        if(ary[i] == val) {
+          return i
+        }
+      }
+      return -1
+    }
+
+    function initial(ary) {
+      return ary.slice(0,ary.length - 1)
+    }
+
+
+    function intersection(...ary) {
+      return ary.reduce(function(pre,b) {
+        for(var i of pre) {
+          if(b.indexOf(i) < 0) {
+          pre.splice(pre.indexOf(i))
+          return pre
+          }
+        }
+      })
+    }
+
+
+    function join(ary, separator = ",") {
+      return ary.slice(1).reduce((pre, cur, index = 1) => 
+      pre += separator + cur,String(ary[0]))
+    }
+    
+
+    function last(ary) {
+      return ary.splice(ary.length - 1)
+    }
+
+
+    function lastIndexOf(ary, val, fromIndex = ary.length - 1) {
+      for(var i = fromIndex; i >= 0 ; i--) {
+        if(ary[i] == val) {
+          return i
+        }
+      }
+      return -1
+    }
+
+
+    function nth(ary, n = 0) {
+      return n >= 0? ary[n] : ary[ary.length + n]
+    }
+
+    function pull(ary, ...vals) {
+      return ary.reduce((pre,cur) => {
+        if(!vals.includes(cur)) {
+          pre.push(cur)
+        }
+        return pre
+      },[])
+    }
+
+
+    function pullAll(ary, vals) {
+      return ary.reduce((pre,cur) => {
+        if(!vals.includes(cur)) {
+          pre.push(cur)
+        }
+        return pre
+      },[])
+    }
+
+
+    function reverse(ary) {
+      var result = []
+      for(var i = ary.length - 1; i >=0; i--) {
+        result.push(ary[i])
+      }
+      return result
     }
 
   return {
@@ -252,5 +417,23 @@ var hanqing0328 = function () {
     chunk,
     difference,
     differenceBy,
+    drop,
+    dropRight,
+    fill,
+    flatten,
+    flattenDeep,
+    flattenDepth,
+    fromPairs,
+    head,
+    indexOf,
+    initial,
+    intersection,
+    join,
+    last,
+    lastIndexOf,
+    nth,
+    pull,
+    pullAll,
+    reverse,
   }
 } ()
