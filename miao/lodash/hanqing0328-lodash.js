@@ -336,34 +336,54 @@ var hanqing0328 = function () {
       return -1
     }
 
+
+    /**
+     * 返回数组的除了最后一项以外的数组
+     * @param {} ary 
+     */
     function initial(ary) {
       return ary.slice(0,ary.length - 1)
     }
 
-
+    /**
+     * 返回所有数组中全部包含的值的数组
+     * Creates an array of unique values that are included in all given arrays
+     * @param  {...any} ary 
+     */
     function intersection(...ary) {
-      return ary.reduce(function(pre,b) {
-        for(var i of pre) {
-          if(b.indexOf(i) < 0) {
-          pre.splice(pre.indexOf(i))
+      return ary.reduce(function(pre,cur) {
+        for(var item of pre) {
+          if(cur.indexOf(item) < 0) {
+          pre.splice(pre.indexOf(item))
           return pre
           }
         }
       })
     }
 
-
+    /**
+     * 把数组里的各项用指定符号当分隔符，组成字符串
+     * @param {*} ary 
+     * @param {*} separator 
+     */
     function join(ary, separator = ",") {
       return ary.slice(1).reduce((pre, cur, index = 1) => 
       pre += separator + String(cur),String(ary[0]))
     }
     
-
+    /**
+     * 返回数组的最后一项
+     */
     function last(ary) {
-      return ary(ary.length - 1)
+      return ary[ary.length - 1]
     }
 
-
+    /**
+     * 从数组的后面开始查找指定值的下标
+     * @param {*} ary 
+     * @param {*} val 
+     * @param {*} fromIndex 
+     */
     function lastIndexOf(ary, val, fromIndex = ary.length - 1) {
       for(var i = fromIndex; i >= 0 ; i--) {
         if(ary[i] == val) {
@@ -373,11 +393,21 @@ var hanqing0328 = function () {
       return -1
     }
 
-
+    /**
+     * 返回数组的n下标的值
+     * @param {*} ary 
+     * @param {*} n 
+     */
     function nth(ary, n = 0) {
       return n >= 0? ary[n] : ary[ary.length + n]
     }
+    
 
+    /**
+     * 从数组排除所有指定值vals
+     * @param {*} ary 
+     * @param  {...any} vals 
+     */
     function pull(ary, ...vals) {
       return ary.reduce((pre,cur) => {
         if(!vals.includes(cur)) {
@@ -387,7 +417,11 @@ var hanqing0328 = function () {
       },[])
     }
 
-
+    /**
+     * 从数组里排除指定值vals
+     * @param {*} ary 
+     * @param {*} vals 
+     */
     function pullAll(ary, vals) {
       return ary.reduce((pre,cur) => {
         if(!vals.includes(cur)) {
@@ -397,7 +431,10 @@ var hanqing0328 = function () {
       },[])
     }
 
-
+    /**
+     * 把数组倒序排放
+     * @param {*} ary 
+     */
     function reverse(ary) {
       var result = []
       for(var i = ary.length - 1; i >=0; i--) {
@@ -406,12 +443,67 @@ var hanqing0328 = function () {
       return result
     }
 
+
+    /**
+     * 把val值按照顺序插入数组里
+     * @param {*} ary 
+     * @param {*} val 
+     */
+
     function sortedIndex(ary, val) {
       for(var i = 0 ; i < ary.length ; i++) {
-        if(ary[i] > val) {
+        if(ary[i] >= val) {
           return i 
         }
       }
+    }
+
+
+    /**
+     * 返回所有数组中出现过的值的集合
+     * @param  {...any} arys 
+     */
+    function union(...arys) {
+      var aryTotal = flattenDeep(arys)
+      var result = []
+      for(var item of aryTotal) {
+        if(!result.includes(item)) {
+          result.push(item)
+        }
+      }
+      return result
+    }
+
+    /**
+     * 返回新数组，从给的ary中排除指定值values以后的数组
+     * @param {*} ary 
+     * @param  {...any} values 
+     */
+    function without(ary,...values) {
+      var result = []
+      for(var item of ary) {
+        if(!values.includes(item)) {
+          result.push(item)
+        }
+      }
+      return result
+    }
+
+
+    function xor(...ary) {
+      var aryTotal = flattenDeep(ary)
+      var result = []
+      var cache = []
+      var length = aryTotal.length
+      for(var i = 0; i < length; i++) {
+        var cur = aryTotal.shift()
+        if(!aryTotal.includes(cur) && !cache.includes(cur)) {
+          result.push(cur)
+        } else {
+          cache.push(cur)
+        }
+      }
+      return result
     }
 
   return {
@@ -446,5 +538,8 @@ var hanqing0328 = function () {
     pullAll,
     reverse,
     sortedIndex,
+    union,
+    without,
+    xor,
   }
 } ()
