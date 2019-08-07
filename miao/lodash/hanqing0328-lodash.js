@@ -506,6 +506,144 @@ var hanqing0328 = function () {
       return result
     }
 
+
+   //obj 包括src就返回true
+//思路： 1）obj本身已经跟src本身相同 =》 直接返回true
+//       2)遍历src对象里的所有属性值
+//      3）如果src的属性值又是对象，需要跟obj一起递归，深层比较
+//           =》深层比较结果为false就返回false
+//      4） 如果src的属性值不是对象，直接与obj的属性值做比较
+//           =》如果不同返回false
+//      5） 以上都通过了就返回true
+function isMatch(obj, src) {
+  if(obj === src) {  // 1)
+    return true
+  }
+  for(var key in src) {  //2) 注意不是key of
+    if(typeof(src[key]) == 'object' && src[key] !== null) {  // 3)
+      if(!isMatch(obj[key], src[key])) {  // 返回结果如果是false就返回false
+        return false
+      }
+    } else {
+      if(obj[key] !== src[key]) {
+        return false
+      }
+    }
+  }
+  return true
+}
+
+//绑定一个函数的参数， 可有参数占位符，绑定指定位置的参数
+//如： 传 1, window, 2, 3 （用全局变量window代替占位符，lodashi里的下划线）
+// 调用函数时如果传4，5
+//实际接收到的参数时 1，4，2，3，5 (依此从左传给window，剩下的push到最后即可)
+
+function bind(f, thisArg, ...fixedArgs) {
+  return function(...args) {
+    var realArgs = [...fixedArgs]
+    for(var i = 0 ; i < realArgs.length; i++) {
+      if(realArgs[i] === window) {
+        realArgs[i] == args.shift()
+      }
+    }
+    realArgs.push(...args)
+    return f.apply(thisArg, realArgs)
+  }
+}
+
+//返回一个对比函数判断某个对象是否包含某个属性，也就是固定isMatch的第二个参数
+
+function matches(src) {
+  return function(obj) {
+    return isMatch(obj, src)
+  }
+}
+
+function matches(src) {
+  return bind(isMatch, null, window, src)   // 带占位符window的bind
+}
+
+//接收字符串形式的路径返回数组形式的路径
+//toPath('a[0].b.c');
+// => ['a', '0', 'b', 'c']
+function toPath(str) {
+  return str.split(/\.|\[|\]./g)  //是].
+}
+
+//返回一个对象的指定路径的属性，如果没有就返回默认值
+
+function get(obj, path, defaultVal) {
+  var path = toPath(path)
+  for(var i = 0 ; i < path.length ; i++) {
+    if(obj === undefined) {
+      return defaultVal
+    }
+    obj = obj[path[i]]
+  }
+  return obj
+}
+
+
+//返回一个函数，对比某一个对象的那个路径下的属性值与要对比的值相同不相同
+
+function matchesProperty(path, value) {
+  return function(obj) {
+    return isEqual(get(obj, path), value)  // isEqual深度对比两个对象， get通过path找到obj的属性
+  }
+}
+
+//返回一个函数， 能给返回某个对象的目标路径的属性的函数
+function property(path) {
+  return function(obj) {
+    return get(obj, path)
+  }
+}
+
+//根据传的函数属性返回相应值 （matches，matchesproperty，property的综合版）
+function iteratee(value) {
+  if(typeof(value) == 'string') {  //如果是字符串返回字符串路径下能取某个对象属性的函数
+    return property(value)
+  }
+} 
+
+  if(Array.isArray(value)) { //传数组返回一个函数，对比某一个对象的那个路径下的属性值与要对比的值相同不相同
+    return matchesProperty(value)
+  }
+
+  if(typeof(value) == 'object') { //如果是对象返回一个函数（判断某个对象是否包含某个属性的函数）
+    return matches(value)
+  }
+
+
+
+//只有传够参数才开始调用函数，相当于中间把函数bind掉
+  function curry(f, length = f.length) {
+    return function(...args) {
+      if(args.length === length) {
+        return f(...args)
+      } else {
+        return curry(f.bind(null, ...args), length - args.length)
+      }
+    }
+  }
+
+//几个函数合并成一个函数后返回
+  function composefunc(fs) {
+    return function(...args) {
+      var value = fs[0](...args)
+      for(var i = 0 ; i < fs.length ; i++) {
+        value = fs[i](value)
+      }
+      return value
+    }
+  }
+
+
+
+
+
+
+
   return {
     compact,
     every,
@@ -541,5 +679,15 @@ var hanqing0328 = function () {
     union,
     without,
     xor,
+    isMatch,
+    bind,
+    matches,
+    toPath,
+    get,
+    matchesProperty,
+    property,
+    iteratee,
+    curry,
+    composefunc,
   }
 } ()
