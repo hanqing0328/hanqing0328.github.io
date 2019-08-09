@@ -690,4 +690,4 @@ function iteratee(value) {
     curry,
     composefunc,
   }
-} ()
+}()
