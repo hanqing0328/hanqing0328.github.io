@@ -606,9 +606,9 @@ function iteratee(value) {
   }
 } 
 
-  if(Array.isArray(value)) { //传数组返回一个函数，对比某一个对象的那个路径下的属性值与要对比的值相同不相同
-    return matchesProperty(value)
-  }
+  // if(Array.isArray(value)) { //传数组返回一个函数，对比某一个对象的那个路径下的属性值与要对比的值相同不相同
+  //   return matchesProperty(value)
+  // }
 
   if(typeof(value) == 'object') { //如果是对象返回一个函数（判断某个对象是否包含某个属性的函数）
     return matches(value)
