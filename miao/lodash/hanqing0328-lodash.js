@@ -663,13 +663,14 @@ function differenceBy(array, ...values) {
   if (Array.isArray(values[values.length - 1])) {
     return difference(array, ...values)
 }
-    var identity = values[values.length - 1]
+    var identity = values.pop()
     var func = iteratee(identity)
     var result = []
+    var newvalues = flattenDeep(values)
     for(let i = 0 ; i < array.length; i++) {
-      for(let j = 0; j < values[0].length ; j++) {
+      for(let j = 0; j < newvalues.length ; j++) {
         var sign = true
-        if(isEqual(func(array[i]),func(values[0][j]))) {
+        if(isEqual(func(array[i]),func(newvalues[j]))) {
           sign = false
           break
         }
