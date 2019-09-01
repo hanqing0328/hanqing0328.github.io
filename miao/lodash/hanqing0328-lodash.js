@@ -205,25 +205,7 @@ var hanqing0328 = function () {
         !values.includes(item))          //数组里包不包括某个值，用includes判断
     }
     
-    /**
-     * 
-     * @param {*} ary 
-     * @param {*} values 
-     * @param {*} iteratee 
-     */
-    function differenceBy(ary, values, iteratee) {
-      var result = []
-      for(var vals of ary) {
-        result.push(iteratee(vals))
-      }
-      for(var val of values) {
-        if(result.indexOf(iteratee(val)) != -1) {
-          result.splice(result.indexOf(val) , 1)
-          ary.splice(result.indexOf(val) , 1)
-        }
-      }
-      return ary    
-    }
+
 
     /**
      * 从数组的左边开始删除n个数
@@ -601,18 +583,19 @@ function property(path) {
 
 //根据传的函数属性返回相应值 （matches，matchesproperty，property的综合版）
 function iteratee(value) {
-  if(typeof(value) == 'string') {  //如果是字符串返回字符串路径下能取某个对象属性的函数
+  if(typeof(value) == 'string') {  //如果是字符串返回字符串路径下能取（某个对象）属性的函数
     return property(value)
   }
-} 
-
-  // if(Array.isArray(value)) { //传数组返回一个函数，对比某一个对象的那个路径下的属性值与要对比的值相同不相同
-  //   return matchesProperty(value)
-  // }
-
-  if(typeof(value) == 'object') { //如果是对象返回一个函数（判断某个对象是否包含某个属性的函数）
+  
+  if(Array.isArray(value)) { //传数组返回一个函数，对比（某一个对象）的那个路径下的属性值与要对比的值相同不相同
+    return matchesProperty(value)
+  }
+  
+  if(typeof(value) == 'object') { //如果是对象返回一个函数（判断【某个对象】是否包含绑定的对象）
     return matches(value)
   }
+  return value  //传函数直接返回函数
+} 
 
 
 
@@ -639,9 +622,66 @@ function iteratee(value) {
   }
 
 
+//比交任何值相不相同
+
+  function isEqual(value, other) {
+    if(typeof(value) !== 'object' && typeof(other) !== 'object') {
+      return value == other? true : false
+    } else if(typeof(value) == 'object' && value !== null) {
+      if(typeof(other) !== 'object') {
+        return false
+      }
+      var valLength = value.length
+      var otherLength = other.length
+      if(valLength !== otherLength) {
+        return false
+      }
+      
+      for(var item in value) {
+        if(!isEqual(value[item], other[item])) {
+          return false
+        }
+      }
+      
+      return true
+    }
+  }
 
 
 
+
+
+//传3个参数，第三个参数传方法， 第一个参数和第二个参数以第三个参数的方法做比较， 把第一个参数中不同的部分返回
+// differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor);
+// // => [1.2]
+ 
+// // The `_.property` iteratee shorthand.
+// differenceBy([{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }], 'x');
+// // => [{ 'x': 2 }]
+
+function differenceBy(array, ...values) {
+  if (Array.isArray(values[values.length - 1])) {
+    return difference(array, ...values)
+}
+    var identity = values[values.length - 1]
+    var func = iteratee(identity)
+    var result = []
+    for(let i = 0 ; i < array.length; i++) {
+      for(let j = 0; j < values[0].length ; j++) {
+        var sign = true
+        if(isEqual(func(array[i]),func(values[0][j]))) {
+          sign = false
+          break
+        }
+      }
+      if(sign == true) {
+        result.push(array[i])
+      }
+    }
+    return result
+
+  } 
+}
 
 
   return {
