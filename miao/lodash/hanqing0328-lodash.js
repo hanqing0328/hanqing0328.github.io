@@ -659,28 +659,28 @@ function iteratee(value) {
 // differenceBy([{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }], 'x');
 // // => [{ 'x': 2 }]
 
-function differenceBy(array, ...values) {
-  if (Array.isArray(values[values.length - 1])) {
-    return difference(array, ...values)
-}
-    var identity = values[values.length - 1]
-    var func = iteratee(identity)
-    var result = []
-    for(let i = 0 ; i < array.length; i++) {
-      for(let j = 0; j < values[0].length ; j++) {
-        var sign = true
-        if(isEqual(func(array[i]),func(values[0][j]))) {
-          sign = false
-          break
-        }
-      }
-      if(sign == true) {
-        result.push(array[i])
-      }
-    }
-    return result
+// function differenceBy(array, ...values) {
+//   if (Array.isArray(values[values.length - 1])) {
+//     return difference(array, ...values)
+// }
+//     var identity = values[values.length - 1]
+//     var func = iteratee(identity)
+//     var result = []
+//     for(let i = 0 ; i < array.length; i++) {
+//       for(let j = 0; j < values[0].length ; j++) {
+//         var sign = true
+//         if(isEqual(func(array[i]),func(values[0][j]))) {
+//           sign = false
+//           break
+//         }
+//       }
+//       if(sign == true) {
+//         result.push(array[i])
+//       }
+//     }
+//     return result
 
-  } 
+//   } 
 
 
 
