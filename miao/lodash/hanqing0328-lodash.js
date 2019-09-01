@@ -27,7 +27,7 @@ var hanqing0328 = function () {
  */
   function every(ary, predicate) {
     for(var i = 0 ; i < ary.length ; i++) {
-      if(!predicate(ary[i], i, ary)) {
+      if(!iteratee(predicate)(ary[i], i, ary)) {
         return false
       }
     }
@@ -310,9 +310,11 @@ var hanqing0328 = function () {
     }
 
     function indexOf(ary, val, fromIndex = 0) {
-      for(var i = fromIndex; i < ary.length ; i++) {
-        if(ary[i] == val) {
-          return i
+      if(val !== null) {
+        for(var i = fromIndex; i < ary.length ; i++) {
+          if(ary[i] == val) {
+            return i
+          }
         }
       }
       return -1
@@ -367,9 +369,11 @@ var hanqing0328 = function () {
      * @param {*} fromIndex 
      */
     function lastIndexOf(ary, val, fromIndex = ary.length - 1) {
-      for(var i = fromIndex; i >= 0 ; i--) {
-        if(ary[i] == val) {
-          return i
+      if(val !== null) {
+        for(var i = fromIndex; i >= 0 ; i--) {
+          if(ary[i] == val) {
+            return i
+          }
         }
       }
       return -1
@@ -588,7 +592,7 @@ function iteratee(value) {
   }
   
   if(Array.isArray(value)) { //传数组返回一个函数，对比（某一个对象）的那个路径下的属性值与要对比的值相同不相同
-    return matchesProperty(value)
+    return matchesProperty(...value)
   }
   
   if(typeof(value) == 'object') { //如果是对象返回一个函数（判断【某个对象】是否包含绑定的对象）
@@ -683,7 +687,151 @@ function differenceBy(array, ...values) {
 
   } 
 
+  //从右往左遍历，直到返回false停止删除元素
 
+  function dropRightWhile(array, identity) {
+    var newIdentity = iteratee(identity)
+    for(var i = array.length - 1 ; i >= 0 ; i--) {
+      if(!newIdentity(array[i], i, array)) {
+        break
+      }
+      array.pop()
+    }
+    return array
+  }
+
+  //从左往右遍历直到返回false
+  function dropWhile(array, identity) {
+    var newIdentity = iteratee(identity)
+    for(var i = 0 ; i < array.length  ; i++) {
+      if(!newIdentity(array[i], i, array)) {
+        break
+      }
+      array.unshift()
+    }
+    return array
+  }
+  
+  //从index开始遍历array，直到结果是true，返回此下标
+  function findIndex(array, predicate, fromIndex = 0) {
+    var newIdentity = iteratee(predicate)
+    for(var i = fromIndex; i < array.length ; i++) {
+      if(newIdentity(array[i])) {
+        return i
+      }
+    }
+    return -1
+  }
+
+  //从index开始从右开始遍历到左，直到遇到true，返回此项下标
+
+  function findLastIndex(array, predicate, fromIndex = array.length - 1) {
+    var newIdentity = iteratee(predicate)
+    for(var i = fromIndex; i >= 0 ; i--) {
+      if(newIdentity(array[i])) {
+        return i
+      }
+    }
+    return -1
+  }
+
+ //从多组数组中过滤出只出现过一次的
+  function unionBy(...args) {
+    var iterate = iteratee(args.pop())
+    var aryTotal = flattenDeep(args)
+    var cache = []
+    var result = []
+    for(var item of aryTotal) {
+      if(!cache.includes(iterate(item))) {
+        result.push(item)
+        cache.push(iterate(item))
+      }
+    }
+    return result
+  }
+
+
+  function uniq(array) {
+    var result = []
+    for(var item of array) {
+      if(!result.includes(item)) {
+        result.push(item)
+      }
+    }
+    return result
+  }
+
+
+  function uniqBy(array, iterate) {
+    var iterate = iteratee(iterate)
+    var cache = []
+    var result = []
+    for(var item of array) {
+      if(!cache.includes(iterate(item))) {
+        result.push(item)
+        cache.push(iterate(item))
+      }
+    }
+    return result
+  }
+
+
+//   var zipped = zip(['a', 'b'], [1, 2], [true, false]);
+// // => [['a', 1, true], ['b', 2, false]]
+// unzip(zipped);
+// // => [['a', 'b'], [1, 2], [true, false]]
+
+  function unzip(array) {
+    var result = Array(array[0].length).fill(0).map(it => Array(array.length))
+    for(var i = 0; i < array[0].length; i++) {
+      for(var j = 0; j < array.length; j++) {
+        result[i][j] = array[j][i]
+      }
+    }
+    return result
+  }
+
+  function zip(...array) {
+    var maxlength = 0
+    array.forEach((it, idx)=> {
+      if(it.length > maxlength) {
+        maxlength = it.length
+      }
+    })
+    var result = Array(maxlength).fill(0).map(it => Array(array.length).fill(undefined))
+    for(var i = 0; i < array[0].length; i++) {
+      for(var j = 0; j < array.length; j++) {
+        result[i][j] = array[j][i]
+      }
+    }
+    return result
+  }
+  
+
+
+  function countBy(collection, iterate) {
+    var result = {}
+    for(var i = 0; i < collection.length; i++) {
+      var newCollect = iteratee(iterate)(collection[i])
+      if(newCollect in result) {
+        result[newCollect]++
+      } else {
+        result[newCollect] = 1
+      }
+    }
+    return result
+  }
+
+  function filter(collection, predicate) {
+    var result = []
+    for (var item of collection) {
+      if(iteratee(predicate)(item)) {
+        result.push(item)
+      }
+    }
+    return result
+  }
+  
 
   return {
     compact,
@@ -730,5 +878,16 @@ function differenceBy(array, ...values) {
     iteratee,
     curry,
     composefunc,
+    dropWhile,
+    dropRightWhile,
+    findIndex,
+    findLastIndex,
+    unionBy,
+    uniq,
+    uniqBy,
+    unzip,
+    zip,
+    countBy,
+    filter,
   }
 }()
