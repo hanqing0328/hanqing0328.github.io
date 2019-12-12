@@ -32,6 +32,8 @@
    - 熟练使用React框架
    - 了解Node基本模块的使用
    - 可使用Nginx反向代理部署多个网页
+   
+   
 ---
 ### 编程相关
 - LeetCode刷题114道。详情查看LeetCode[个人首页](https://leetcode.com/hanqing0328)。
